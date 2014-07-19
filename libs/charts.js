@@ -93,7 +93,12 @@ Raphael.fn.bar = function (w, h, values, colors, opt) {
         var x0 = 0 + o[0],
             y0 = h + o[1];
 
-        //paper.path(makeLinePath('h', x0, y0));
+        var params = {
+            stroke: "#ccd4e0",
+            "stroke-width": 0.5
+        };
+
+        paper.path(makeLinePath('h', x0, y0));
         paper.path(makeLinePath('w', x0, y0));
 
         var maxScaleY = calculateMaxScaleY(),
@@ -135,15 +140,25 @@ Raphael.fn.bar = function (w, h, values, colors, opt) {
             var numOfDivisions = 2,
                 numOfSubs = 5,
                 i, j;
-            for (i = 0; i <= numOfDivisions; i++){
+            for (i = 1; i <= numOfDivisions; i++){
+                paper.path(makeLinePath('h', x0, y0 - h/numOfDivisions*i)).attr(params);
+                paper.text(x0 - 15, y0 - h/numOfDivisions*i, ''+maxScaleY/numOfDivisions*i+'%');
+            }
+            for (i = 1; i <= numOfSubs*numOfDivisions; i++){
+                paper.path(makeLinePath('h', x0, y0 - h/numOfDivisions/numOfSubs*i)).attr(params);
+            }
+            //TODO: create a divs builder
+            /*for (i = 1; i <= numOfDivisions; i++){
                 paper.path(makeLinePath('h', x0, y0 - h/numOfDivisions*i));
                 paper.text(x0 - 15, y0 - h/numOfDivisions*i, ''+maxScaleY/numOfDivisions*i+'%');
-                if (i > 0){
-                    for (j = 0; j < numOfSubs; j++) {
-                        paper.path(makeLinePath('h', x0, (y0 - h/numOfDivisions*i)/numOfSubs*j));
-                    }
+                for (j = 1; j <= numOfSubs; j++) {
+                    paper.path(makeLinePath('h', x0, h/numOfDivisions*i + h/numOfDivisions/numOfSubs*j));
                 }
-            }
+            }*/
+        }
+
+        function drawShadow () {
+
         }
 
     }
