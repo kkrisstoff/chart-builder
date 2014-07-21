@@ -81,38 +81,68 @@ Raphael.fn.pie = function (w, h, values, colors, opt) {
 Raphael.fn.bar = function (w, h, values, colors, opt) {
     var paper = this;
 
-    var scaleWidth = w - 40,
-        scaleHeight = h - 40;
-    drawScale(scaleWidth, scaleHeight, values);
+    var sX = 20,
+        sY = h - 20,
+        screenW = w - sX,
+        screenH = sY,
+        size3d = 10;
 
+    var parameters = {
+        stroke: "#000",
+        "stroke-width": 0.5,
+        fill: colors[1]
+    };
 
+    drawRect(10, 10, 20, 50, parameters);
+    var top = createTopPath(10, 10, 20, 50);
+    var side = createSidePath(10, 10, 20, 50);
+    drawSide(top, parameters);
+    drawSide(side, parameters);
 
+    function createTopPath(x, y, w, h) {
+        return ["M", x, y, "L", x + size3d, y - size3d, "L", x + w + size3d, y - size3d, "L", x + w, y, "z"].join(",");
+    }
+    function createSidePath(x, y, w, h) {
+        return ["M", x + w + size3d, y - size3d, "L", x + w + size3d, y + h - size3d, "L", x + w, y + h, "L", x + w, y, "z"].join(",");
+    }
+    function drawRect (x, y, w, h, params){
+        var pms = params || {};
+        return paper.rect(x, y, w, h).attr(pms)
+    }
+    function drawSide(path, params) {
+        return paper.path(path).attr(params);
+    }
+
+    drawScale(screenW, screenH, values);
     function drawScale (w, h, values) {
-        var o = [30, 20];
 
-        var x0 = 0 + o[0],
-            y0 = h + o[1];
-
-        var params = {
+        var lineParams = {
             stroke: "#ccd4e0",
             "stroke-width": 0.5
         };
+        var axisParams = {
+            stroke: "#ccd4e0",
+            "stroke-width": 1
+        };
+        var shadowParams = {
+            stroke: "#ccd4e0",
+            "stroke-width": 0.5,
+            fill: "#ccd4e0"
+        };
 
-        paper.path(makeLinePath('h', x0, y0));
-        paper.path(makeLinePath('w', x0, y0));
+
 
         var maxScaleY = calculateMaxScaleY(),
             scale = createScale(maxScaleY);
-        console.log(maxScaleY);
-        console.log(scale);
 
+        drawAxis();
         drawDivisions(maxScaleY);
-
+        drawShadow();
 
         function makeLinePath(direction, xStart, yStart) {
             var m = {
-                'h': [w - xStart, yStart],
-                'w': [xStart, h -yStart]
+                'h': [xStart, 0],
+                'w': [w, yStart]
             };
             return [
                 "M", xStart, yStart,
@@ -136,16 +166,20 @@ Raphael.fn.bar = function (w, h, values, colors, opt) {
             return arr.reverse();
         }
 
+        function drawAxis() {
+            paper.path(makeLinePath('h', sX, sY)).attr(axisParams);
+            paper.path(makeLinePath('w', sX, sY)).attr(axisParams);
+        }
         function drawDivisions (maxScaleY) {
             var numOfDivisions = 2,
                 numOfSubs = 5,
                 i, j;
             for (i = 1; i <= numOfDivisions; i++){
-                paper.path(makeLinePath('h', x0, y0 - h/numOfDivisions*i)).attr(params);
-                paper.text(x0 - 15, y0 - h/numOfDivisions*i, ''+maxScaleY/numOfDivisions*i+'%');
+                paper.path(makeLinePath('h', sX, sY - h/numOfDivisions*i)).attr(lineParams);
+                paper.text(sX - 15, sY - h/numOfDivisions*i, ''+maxScaleY/numOfDivisions*i+'%');
             }
             for (i = 1; i <= numOfSubs*numOfDivisions; i++){
-                paper.path(makeLinePath('h', x0, y0 - h/numOfDivisions/numOfSubs*i)).attr(params);
+                paper.path(makeLinePath('h', sX, sY - h/numOfDivisions/numOfSubs*i)).attr(lineParams);
             }
             //TODO: create a divs builder
             /*for (i = 1; i <= numOfDivisions; i++){
@@ -158,7 +192,7 @@ Raphael.fn.bar = function (w, h, values, colors, opt) {
         }
 
         function drawShadow () {
-
+            drawSide(createTopPath(0 + 20, screenH + 30, screenW, 10), shadowParams)
         }
 
     }
