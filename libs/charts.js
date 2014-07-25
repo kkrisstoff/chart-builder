@@ -55,11 +55,9 @@ Raphael.fn.pie = function (w, h, values, colors, opt) {
     function buildSectorPath(x1, y1, x2, y2){
         //cX, cY, r1, r2, angle, currentAngle
         return ["M", cX, cY, "L", x1, y1, "A",  ]
-
     }
 
     drawChart();
-
 
     function drawSector(cx, cy, r, r2, startAngle, endAngle, params) {
         var x1 = cx + r * Math.cos(-startAngle * rad),
@@ -78,13 +76,21 @@ Raphael.fn.pie = function (w, h, values, colors, opt) {
 
 };
 
-Raphael.fn.bar = function (w, h, values, colors, opt) {
-    var paper = this;
+Raphael.fn.bar = function (/*w, h, */values, colors, options) {
+    console.log(this);
+    var paper = this,
+        opt = options || {};
 
-    var sX = 20,
-        sY = h - 20,
-        screenW = w - sX,
-        screenH = sY,
+    var o = {
+        padding: opt.padding || 0
+    };
+
+    var w = this.width,
+        h = this.height,
+        x0 = o.padding,
+        y0 = h - o.padding,
+        screenW = w - x0,
+        screenH = y0,
         size3d = 10;
 
     var parameters = {
@@ -93,26 +99,7 @@ Raphael.fn.bar = function (w, h, values, colors, opt) {
         fill: colors[1]
     };
 
-    drawRect(10, 10, 20, 50, parameters);
-    var top = createTopPath(10, 10, 20, 50);
-    var side = createSidePath(10, 10, 20, 50);
-    drawSide(top, parameters);
-    drawSide(side, parameters);
-
-    function createTopPath(x, y, w, h) {
-        return ["M", x, y, "L", x + size3d, y - size3d, "L", x + w + size3d, y - size3d, "L", x + w, y, "z"].join(",");
-    }
-    function createSidePath(x, y, w, h) {
-        return ["M", x + w + size3d, y - size3d, "L", x + w + size3d, y + h - size3d, "L", x + w, y + h, "L", x + w, y, "z"].join(",");
-    }
-    function drawRect (x, y, w, h, params){
-        var pms = params || {};
-        return paper.rect(x, y, w, h).attr(pms)
-    }
-    function drawSide(path, params) {
-        return paper.path(path).attr(params);
-    }
-
+    /* draw Scale */
     drawScale(screenW, screenH, values);
     function drawScale (w, h, values) {
 
@@ -130,8 +117,6 @@ Raphael.fn.bar = function (w, h, values, colors, opt) {
             fill: "#ccd4e0"
         };
 
-
-
         var maxScaleY = calculateMaxScaleY(),
             scale = createScale(maxScaleY);
 
@@ -141,8 +126,8 @@ Raphael.fn.bar = function (w, h, values, colors, opt) {
 
         function makeLinePath(direction, xStart, yStart) {
             var m = {
-                'h': [xStart, 0],
-                'w': [w, yStart]
+                'v': [xStart, 0],
+                'h': [w, yStart]
             };
             return [
                 "M", xStart, yStart,
@@ -167,28 +152,22 @@ Raphael.fn.bar = function (w, h, values, colors, opt) {
         }
 
         function drawAxis() {
-            paper.path(makeLinePath('h', sX, sY)).attr(axisParams);
-            paper.path(makeLinePath('w', sX, sY)).attr(axisParams);
+            paper.path(makeLinePath('h', x0, y0)).attr(axisParams);
+            paper.path(makeLinePath('v', x0, y0)).attr(axisParams);
         }
         function drawDivisions (maxScaleY) {
-            var numOfDivisions = 2,
+            console.log(maxScaleY);
+            var numOfDivisions = 3,
                 numOfSubs = 5,
                 i, j;
             for (i = 1; i <= numOfDivisions; i++){
-                paper.path(makeLinePath('h', sX, sY - h/numOfDivisions*i)).attr(lineParams);
-                paper.text(sX - 15, sY - h/numOfDivisions*i, ''+maxScaleY/numOfDivisions*i+'%');
-            }
-            for (i = 1; i <= numOfSubs*numOfDivisions; i++){
-                paper.path(makeLinePath('h', sX, sY - h/numOfDivisions/numOfSubs*i)).attr(lineParams);
-            }
-            //TODO: create a divs builder
-            /*for (i = 1; i <= numOfDivisions; i++){
-                paper.path(makeLinePath('h', x0, y0 - h/numOfDivisions*i));
-                paper.text(x0 - 15, y0 - h/numOfDivisions*i, ''+maxScaleY/numOfDivisions*i+'%');
-                for (j = 1; j <= numOfSubs; j++) {
-                    paper.path(makeLinePath('h', x0, h/numOfDivisions*i + h/numOfDivisions/numOfSubs*j));
+                var y = screenH - screenH/numOfDivisions*i;
+                paper.path(makeLinePath('h', x0, y)).attr(lineParams);
+                paper.text(x0 - 15, y, ''+maxScaleY/numOfDivisions*i+'%');
+                for (j = 1; j < numOfSubs; j++){
+                    paper.path(makeLinePath('h', x0, y + screenH/numOfDivisions/numOfSubs*j)).attr(lineParams);
                 }
-            }*/
+            }
         }
 
         function drawShadow () {
@@ -196,4 +175,40 @@ Raphael.fn.bar = function (w, h, values, colors, opt) {
         }
 
     }
+
+    /* draw bar */
+    drawBars();
+    function drawBars() {
+        var delta = 10,
+            i,
+            l = values.length;
+        var barWidth = 20;
+        for (i = 0; i<l; i++){
+            drawBar(x0 + delta, y0, barWidth, values[i]);
+            delta += (10 + barWidth);
+        }
+    }
+
+    function drawBar (x0, y0, w, value){
+        drawRect(x0, y0 - value, w, value, parameters);
+        var top = createTopPath(x0, y0 - value, w, value);
+        var side = createSidePath(x0, y0 - value, w, value);
+        drawSide(top, parameters);
+        drawSide(side, parameters);
+    }
+
+    function createTopPath(x, y, w, h) {
+        return ["M", x, y, "L", x + size3d, y - size3d, "L", x + w + size3d, y - size3d, "L", x + w, y, "z"].join(",");
+    }
+    function createSidePath(x, y, w, h) {
+        return ["M", x + w + size3d, y - size3d, "L", x + w + size3d, y + h - size3d, "L", x + w, y + h, "L", x + w, y, "z"].join(",");
+    }
+    function drawRect (x, y, w, h, params){
+        var pms = params || {};
+        return paper.rect(x, y, w, h).attr(pms)
+    }
+    function drawSide(path, params) {
+        return paper.path(path).attr(params);
+    }
+
 };

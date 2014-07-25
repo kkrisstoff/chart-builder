@@ -6,6 +6,7 @@ window.onload=function(){
     var vls = [20, 10, 50, 10, 10],
         colors = ['#b1238d', '#c71057', '#fc7b06', '#ffc200', '#41baea'],
         options = {
+            padding: 30,
             is3D: true
         };
 
@@ -13,7 +14,7 @@ window.onload=function(){
         canvasHeight = elem.clientHeight;
 
     var chart = Raphael(elem, canvasWidth, canvasHeight);
-    chart.bar(canvasWidth, canvasHeight, vls, colors, options)
+    chart.bar(/*canvasWidth, canvasHeight, */vls, colors, options)
 };
 
 
