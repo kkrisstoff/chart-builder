@@ -14,7 +14,7 @@ window.onload=function(){
         canvasHeight = elem.clientHeight;
 
     var chart = Raphael(elem, canvasWidth, canvasHeight);
-    chart.bar(/*canvasWidth, canvasHeight, */vls, colors, options)
+    chart.bar(/*canvasWidth, canvasHeight, */vls, colors, options);
 };
 
 

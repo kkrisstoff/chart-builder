@@ -85,6 +85,10 @@ Raphael.fn.bar = function (/*w, h, */values, colors, options) {
         padding: opt.padding || 0
     };
 
+    paper.stngs = {
+        scaleY: null
+    };
+
     var w = this.width,
         h = this.height,
         x0 = o.padding,
@@ -119,6 +123,8 @@ Raphael.fn.bar = function (/*w, h, */values, colors, options) {
 
         var maxScaleY = calculateMaxScaleY(),
             scale = createScale(maxScaleY);
+
+        paper.stngs.scaleY = maxScaleY;
 
         drawAxis();
         drawDivisions(maxScaleY);
@@ -171,44 +177,90 @@ Raphael.fn.bar = function (/*w, h, */values, colors, options) {
         }
 
         function drawShadow () {
-            drawSide(createTopPath(0 + 20, screenH + 30, screenW, 10), shadowParams)
+            //drawSide(createTopPath(0 + 20, screenH + 30, screenW, 10), shadowParams)
         }
 
     }
 
-    /* draw bar */
-    drawBars();
-    function drawBars() {
-        var delta = 10,
+    /* draw bar chart */
+    function Bar (value, opt){
+        this.val = value;
+        this.x = opt.x;
+        this.y = opt.y;
+        this.w = opt.w || 20;
+
+        this.parts = [];
+        return this
+    }
+    Bar.prototype.createPath = function (type, params) {
+        var types = {
+            top: top,
+            side: side
+        };
+        if (typeof types[type] == "function"){
+            return types[type].apply(this, params);
+        }
+        function top(x, y, w) {
+            return ["M", x, y, "L", x + size3d, y - size3d, "L", x + w + size3d, y - size3d, "L", x + w, y, "z"].join(",");
+        }
+        function side(x, y, w, h) {
+            return ["M", x + w + size3d, y - size3d, "L", x + w + size3d, y + h - size3d, "L", x + w, y + h, "L", x + w, y, "z"].join(",");
+        }
+    };
+    Bar.prototype.drawRect = function(x, y, w, h, params){
+        var pms = params || {};
+        return paper.rect(x, y, w, h).attr(pms)
+    };
+    Bar.prototype.drawPart = function (path, params) {
+        return paper.path(path).attr(params);
+    };
+    Bar.prototype.drawBar = function (){
+        var x0 = this.x,
+            y0 = this.y,
+            w = this.w,
+            value = this.val;
+        var top = this.createPath('top', [x0, y0 - value, w, value]);
+        var side = this.createPath('side', [x0, y0 - value, w, value]);
+        var frontPart = this.drawRect(x0, y0 - value, w, value, parameters);
+        var topPart = this.drawPart(top, parameters);
+        var sidePart = this.drawPart(side, parameters);
+        this.parts.push(frontPart)/*.push(topPart).push(sidePart)*/;
+    };
+    Bar.prototype.addEvents = function () {
+        this.parts[0].mouseover(function (e) {
+            console.log("over", e);
+        })
+    };
+    drawBars(x0, y0, screenW, screenH, values);
+    function drawBars(x, y, w, h, vals ) {
+        var x0 = x,
+            y0 = y,
+            canvasW = w,
+            canvasH = h,
+            delta = 15,
             i,
             l = values.length;
         var barWidth = 20;
+        var hScale = getCanvasMaxScale();
+        var opt = {
+                x: x0,
+                y: y0
+            };
+
         for (i = 0; i<l; i++){
-            drawBar(x0 + delta, y0, barWidth, values[i]);
-            delta += (10 + barWidth);
+            var value = h/hScale*values[i];
+            parameters.fill = colors[i];
+            var bar = new Bar(value, opt);
+            opt.x += delta + barWidth;
+            bar.drawBar();
+            bar.addEvents();
         }
     }
 
-    function drawBar (x0, y0, w, value){
-        drawRect(x0, y0 - value, w, value, parameters);
-        var top = createTopPath(x0, y0 - value, w, value);
-        var side = createSidePath(x0, y0 - value, w, value);
-        drawSide(top, parameters);
-        drawSide(side, parameters);
+
+    function getCanvasMaxScale(){
+        return paper.stngs.scaleY;
     }
 
-    function createTopPath(x, y, w, h) {
-        return ["M", x, y, "L", x + size3d, y - size3d, "L", x + w + size3d, y - size3d, "L", x + w, y, "z"].join(",");
-    }
-    function createSidePath(x, y, w, h) {
-        return ["M", x + w + size3d, y - size3d, "L", x + w + size3d, y + h - size3d, "L", x + w, y + h, "L", x + w, y, "z"].join(",");
-    }
-    function drawRect (x, y, w, h, params){
-        var pms = params || {};
-        return paper.rect(x, y, w, h).attr(pms)
-    }
-    function drawSide(path, params) {
-        return paper.path(path).attr(params);
-    }
 
 };
