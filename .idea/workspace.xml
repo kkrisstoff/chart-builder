@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="848d23e3-73bc-4408-80ee-d7a86d8c55e4" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/charts.js" afterPath="$PROJECT_DIR$/libs/charts.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.js" afterPath="$PROJECT_DIR$/main.js" />
     </list>
     <ignored path="chart-builder.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,7 +28,7 @@
       <file leaf-file-name="main.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="0" selection-start="505" selection-end="505" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="675">
+            <state line="17" column="2" selection-start="501" selection-end="501" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="675">
               <folding />
             </state>
           </provider>
@@ -38,7 +37,7 @@
       <file leaf-file-name="charts.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/libs/charts.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="256" column="9" selection-start="7522" selection-end="7522" vertical-scroll-proportion="1.7270669" vertical-offset="4875" max-vertical-offset="6800">
+            <state line="269" column="5" selection-start="7822" selection-end="7822" vertical-scroll-proportion="0.63193655" vertical-offset="6167" max-vertical-offset="7050">
               <folding />
             </state>
           </provider>
@@ -190,7 +189,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -231,14 +230,14 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="0" selection-start="505" selection-end="505" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="675">
+        <state line="17" column="2" selection-start="501" selection-end="501" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="675">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/libs/charts.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="256" column="9" selection-start="7522" selection-end="7522" vertical-scroll-proportion="1.7270669" vertical-offset="4875" max-vertical-offset="6800">
+        <state line="269" column="5" selection-start="7822" selection-end="7822" vertical-scroll-proportion="0.63193655" vertical-offset="6167" max-vertical-offset="7050">
           <folding />
         </state>
       </provider>

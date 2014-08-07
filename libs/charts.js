@@ -190,7 +190,7 @@ Raphael.fn.bar = function (/*w, h, */values, colors, options) {
         this.w = opt.w || 20;
 
         this.parts = [];
-        return this
+        return this;
     }
     Bar.prototype.createPath = function (type, params) {
         var types = {
@@ -257,7 +257,17 @@ Raphael.fn.bar = function (/*w, h, */values, colors, options) {
         }
     }
 
+    //tooltip
+    function createTooltip(){
+        var tooltip;
+        if(document.getElementById('tooltip')){
+            tooltip = document.getElementById('tooltip')
+        }else {
+            tooltip = document.createElement("div");
+            tooltip.id = "tooltip";
+        }
 
+    }
     function getCanvasMaxScale(){
         return paper.stngs.scaleY;
     }
