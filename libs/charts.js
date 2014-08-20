@@ -1,4 +1,8 @@
-
+/**
+ *
+ * @param values []
+ * @param options {}
+ */
 Raphael.fn.pie = function (w, h, values, colors, opt) {
     var paper = this,
         rad = Math.PI / 180,
@@ -7,7 +11,7 @@ Raphael.fn.pie = function (w, h, values, colors, opt) {
     var cX = w/2,
         cY = h/ 2,
         r1 = 80,
-        r2 = opt.is3D ? 50 : r1,
+        r2 = opt.is3d ? 50 : r1,
         z = 30;
 
     var totalValue = countTotalValue(),
@@ -76,13 +80,27 @@ Raphael.fn.pie = function (w, h, values, colors, opt) {
 
 };
 
-Raphael.fn.bar = function (/*w, h, */values, colors, options) {
-    console.log(this);
+
+/**
+ *
+ * @param values []
+ * @param options {}
+ */
+Raphael.fn.bar = function (values, options) {
     var paper = this,
         opt = options || {};
+    paper.el = this.canvas.offsetParent;
 
     var o = {
-        padding: opt.padding || 0
+        padding: opt.padding || 0,
+        is3d: opt.is3d,
+        size3d: 10,
+        colors: opt.colors,
+        legendText: opt.legendText || options.labels || [],
+        legendColors: opt.legendColors || [],
+        labels: opt.labels || [],
+
+        onSectorClicked: opt.onSectorClicked || function () { }
     };
 
     paper.stngs = {
@@ -94,13 +112,12 @@ Raphael.fn.bar = function (/*w, h, */values, colors, options) {
         x0 = o.padding,
         y0 = h - o.padding,
         screenW = w - x0,
-        screenH = y0,
-        size3d = 10;
+        screenH = y0;
 
     var parameters = {
         stroke: "#000",
         "stroke-width": 0.5,
-        fill: colors[1]
+        fill: o.colors[1]
     };
 
     /* draw Scale */
@@ -128,7 +145,7 @@ Raphael.fn.bar = function (/*w, h, */values, colors, options) {
 
         drawAxis();
         drawDivisions(maxScaleY);
-        drawShadow();
+
 
         function makeLinePath(direction, xStart, yStart) {
             var m = {
@@ -176,10 +193,6 @@ Raphael.fn.bar = function (/*w, h, */values, colors, options) {
             }
         }
 
-        function drawShadow () {
-            //drawSide(createTopPath(0 + 20, screenH + 30, screenW, 10), shadowParams)
-        }
-
     }
 
     /* draw bar chart */
@@ -190,6 +203,12 @@ Raphael.fn.bar = function (/*w, h, */values, colors, options) {
         this.w = opt.w || 20;
 
         this.parts = [];
+
+        this.onMouseOver = function(){};
+
+        if (typeof opt.onMouseOver == 'function'){
+            this.onMouseOver = opt.onMouseOver
+        }
         return this;
     }
     Bar.prototype.createPath = function (type, params) {
@@ -201,9 +220,11 @@ Raphael.fn.bar = function (/*w, h, */values, colors, options) {
             return types[type].apply(this, params);
         }
         function top(x, y, w) {
+            var size3d = o.size3d;
             return ["M", x, y, "L", x + size3d, y - size3d, "L", x + w + size3d, y - size3d, "L", x + w, y, "z"].join(",");
         }
         function side(x, y, w, h) {
+            var size3d = o.size3d;
             return ["M", x + w + size3d, y - size3d, "L", x + w + size3d, y + h - size3d, "L", x + w, y + h, "L", x + w, y, "z"].join(",");
         }
     };
@@ -219,17 +240,34 @@ Raphael.fn.bar = function (/*w, h, */values, colors, options) {
             y0 = this.y,
             w = this.w,
             value = this.val;
-        var top = this.createPath('top', [x0, y0 - value, w, value]);
-        var side = this.createPath('side', [x0, y0 - value, w, value]);
+        if (o.is3d){
+            x0 = this.x + o.size3d;
+            y0 = this.y + o.size3d;
+            var top = this.createPath('top', [x0, y0 - value, w, value]);
+            var side = this.createPath('side', [x0, y0 - value, w, value]);
+            var topPart = this.drawPart(top, parameters);
+            var sidePart = this.drawPart(side, parameters);
+            this.drawPart(this.createPath('top', [0 + 20, screenH + o.size3d, screenW, o.size3d]), {
+                stroke: "#ccd4e0",
+                "stroke-width": 0.5,
+                fill: "#ccd4e0"
+            }).toBack();
+        }
+
         var frontPart = this.drawRect(x0, y0 - value, w, value, parameters);
-        var topPart = this.drawPart(top, parameters);
-        var sidePart = this.drawPart(side, parameters);
         this.parts.push(frontPart)/*.push(topPart).push(sidePart)*/;
     };
-    Bar.prototype.addEvents = function () {
-        this.parts[0].mouseover(function (e) {
-            console.log("over", e);
-        })
+    Bar.prototype.addEvents = function (num) {
+        this.parts[0]
+            .mouseover(function (e) {
+                showTooltip(e, num);
+            })
+            .mouseout(function (e) {
+                hideTooltip(e);
+            })
+            .click(function (e) {
+                o.onSectorClicked(e, num);
+            });
     };
     drawBars(x0, y0, screenW, screenH, values);
     function drawBars(x, y, w, h, vals ) {
@@ -249,15 +287,26 @@ Raphael.fn.bar = function (/*w, h, */values, colors, options) {
 
         for (i = 0; i<l; i++){
             var value = h/hScale*values[i];
-            parameters.fill = colors[i];
+            parameters.fill = o.colors[i];
             var bar = new Bar(value, opt);
             opt.x += delta + barWidth;
             bar.drawBar();
-            bar.addEvents();
+            bar.addEvents(i);
         }
     }
 
     //tooltip
+    function showTooltip(e, num){
+        var tooltip = createTooltip(),
+            innerText = o.labels[num];
+        tooltip.style.display = 'block';
+        tooltip.innerHTML = innerText;
+        calculatePosition();
+    }
+    function hideTooltip(e){
+        var tooltip = document.getElementById('tooltip');
+        tooltip.style.display = 'none';
+    }
     function createTooltip(){
         var tooltip;
         if(document.getElementById('tooltip')){
@@ -265,9 +314,15 @@ Raphael.fn.bar = function (/*w, h, */values, colors, options) {
         }else {
             tooltip = document.createElement("div");
             tooltip.id = "tooltip";
+            paper.el.appendChild(tooltip);
         }
+        return tooltip
+    }
+    function calculatePosition() {
 
     }
+
+
     function getCanvasMaxScale(){
         return paper.stngs.scaleY;
     }
