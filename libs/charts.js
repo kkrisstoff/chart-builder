@@ -3,10 +3,13 @@
  * @param values []
  * @param options {}
  */
-Raphael.fn.pie = function (w, h, values, colors, opt) {
+Raphael.fn.pie = function (values, opt) {
     var paper = this,
+        w = this.width,
+        h = this.height,
         rad = Math.PI / 180,
-        chart = paper.set();
+        chart = paper.set(),
+        colors = opt.colors;
 
     var cX = w/2,
         cY = h/ 2,
@@ -18,6 +21,57 @@ Raphael.fn.pie = function (w, h, values, colors, opt) {
         angle = 0,
         start = 0;
 
+    function Chart() {
+        this.c0 = [cX, cY];
+        this.r0 = 80;
+        this.sectors = [];
+        this.values = values;
+    }
+    function Sector (i, val, x0, y0, r) {
+        var color = colors[i],
+            //color = Raphael.hsb(0.1, .75, 1),
+            param = {fill: color, stroke: "none", "stroke-width": 3};
+        this.r1 = r;
+        this.angle = 360*val / totalValue;
+        this.currentAngle = angle + this.angle;
+        angle = this.currentAngle;
+        console.log(angle);
+
+        this.sector = this.drawSector(x0, y0, r1, r2, this.angle, this.currentAngle, param);
+        //var s = drawSector(cX, cY, r1, r2, angle, currentAngle, param);
+        //var s1 = drawSector(cX, cY - z, r1, r2, angle, currentAngle, param);
+        //s.toBack();
+    }
+    Chart.prototype.createSector = function () {
+        if (!this.values) {
+            console.log("your values is empty: (" + values.join(',') + ")");
+            return false;
+        }
+        var x0 = this.c0[0],
+            y0 = this.c0[1],
+            r1 = this.r0,
+            valsLength = this.values.length,
+            sector,
+            i;
+        for (i=0; i<valsLength; i+=1){
+            sector = new Sector(i, this.values[i], x0, y0, r1);
+
+            this.sectors.push(sector);
+        }
+
+    };
+    Sector.prototype.drawSector = function (cx, cy, r, r2, startAngle, endAngle, params) {
+        var x1 = cx + r * Math.cos(-startAngle * rad),
+            x2 = cx + r2 * Math.cos(-endAngle * rad),
+            y1 = cy + r * Math.sin(-startAngle * rad),
+            y2 = cy + r2 * Math.sin(-endAngle * rad);
+        return paper.path(["M", cx, cy, "L", x1, y1, "A", r, r2, 0, +(endAngle - startAngle > 180), 0, x2, y2, "z"]).attr(params);
+    };
+
+    var chart = new Chart();
+    chart.createSector();
+
+    // helpers
     function countTotalValue(){
         var i,
             l = values.length,
@@ -26,56 +80,6 @@ Raphael.fn.pie = function (w, h, values, colors, opt) {
             val += values[i];
         }
         return val || false;
-    }
-
-    function drawChart() {
-        if (!totalValue) {
-            console.log("your values is empty: (" + values.join(',') + ")");
-            return false;
-        }
-        var xEnd,
-            yEnd,
-            rEnd;
-        var path = buildSectorPath();
-
-        for (var i = 0, l = values.length; i < l; i++){
-            sector(i);
-        }
-    }
-    function sector(i) {
-        var val = values[i],
-            color = colors[i],
-            thisAngle = 360*val / totalValue,
-            currentAngle = angle + thisAngle,
-        //color = Raphael.hsb(0.1, .75, 1),
-            param = {fill: color, stroke: "none", "stroke-width": 3};
-
-        var s = drawSector(cX, cY, r1, r2, angle, currentAngle, param);
-        var s1 = drawSector(cX, cY - z, r1, r2, angle, currentAngle, param);
-        s.toBack();
-        angle = currentAngle;
-    }
-
-    function buildSectorPath(x1, y1, x2, y2){
-        //cX, cY, r1, r2, angle, currentAngle
-        return ["M", cX, cY, "L", x1, y1, "A",  ]
-    }
-
-    drawChart();
-
-    function drawSector(cx, cy, r, r2, startAngle, endAngle, params) {
-        var x1 = cx + r * Math.cos(-startAngle * rad),
-            x2 = cx + r2 * Math.cos(-endAngle * rad),
-            y1 = cy + r * Math.sin(-startAngle * rad),
-            y2 = cy + r2 * Math.sin(-endAngle * rad);
-        return paper.path(["M", cx, cy, "L", x1, y1, "A", r, r2, 0, +(endAngle - startAngle > 180), 0, x2, y2, "z"]).attr(params);
-    }
-
-    function createPath(startX, startY) {
-        return ["M", startX, startY,
-            "L", cX, cY,
-            "L", cX, cY + z,
-            "L", startX, startY + z, "z"].join(",");
     }
 
 };
@@ -213,9 +217,9 @@ Raphael.fn.bar = function (values, options) {
     }
     Bar.prototype.createPath = function (type, params) {
         var types = {
-            top: top,
-            side: side
-        };
+                top: top,
+                side: side
+            };
         if (typeof types[type] == "function"){
             return types[type].apply(this, params);
         }
