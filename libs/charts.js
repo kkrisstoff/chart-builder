@@ -13,8 +13,6 @@ Raphael.fn.pie = function (values, opt) {
 
     var cX = w/2,
         cY = h/ 2,
-        r1 = 80,
-        r2 = opt.is3d ? 50 : r1,
         z = 30;
 
     var totalValue = countTotalValue(),
@@ -23,21 +21,40 @@ Raphael.fn.pie = function (values, opt) {
 
     function Chart() {
         this.c0 = [cX, cY];
-        this.r0 = 80;
+        this.rX = 80;
+        this.rY = opt.is3d ? 50 : r1;
         this.sectors = [];
         this.values = values;
     }
-    function Sector (i, val, x0, y0, r) {
+
+    /**
+     *
+     * @param i number
+     * @param val value
+     * @param c object
+     * @param r
+     * @constructor
+     */
+    function Sector (i, val, c) {
+        this.val = val;
+        this.startAngle = c.angle;
+        this.r1 = c.rX;
+        this.r2 = c.rY;
+
+        this.x0 = c.x;
+        this.y0 = c.y;
+
         var color = colors[i],
             //color = Raphael.hsb(0.1, .75, 1),
             param = {fill: color, stroke: "none", "stroke-width": 3};
-        this.r1 = r;
-        this.angle = 360*val / totalValue;
-        this.currentAngle = angle + this.angle;
-        angle = this.currentAngle;
-        console.log(angle);
 
-        this.sector = this.drawSector(x0, y0, r1, r2, this.angle, this.currentAngle, param);
+        this.currentAngle = this.currentAngle || 0;
+
+        var angle = 360*val/100,
+            startAngle = this.startAngle,
+            endAngle = this.startAngle + angle;
+
+        this.sector = this.drawSector(this.x0, this.y0, this.r1, this.r2, startAngle, endAngle, param);
         //var s = drawSector(cX, cY, r1, r2, angle, currentAngle, param);
         //var s1 = drawSector(cX, cY - z, r1, r2, angle, currentAngle, param);
         //s.toBack();
@@ -52,20 +69,23 @@ Raphael.fn.pie = function (values, opt) {
             r1 = this.r0,
             valsLength = this.values.length,
             sector,
-            i;
+            i, currentAngle = 0;
         for (i=0; i<valsLength; i+=1){
-            sector = new Sector(i, this.values[i], x0, y0, r1);
 
+            sector = new Sector(i, this.values[i], {x: x0, y: y0, rX: this.rX, rY: this.rY, angle: currentAngle});
+            currentAngle += 360*this.values[i]/100;
+            //sector.draw();
             this.sectors.push(sector);
         }
 
     };
-    Sector.prototype.drawSector = function (cx, cy, r, r2, startAngle, endAngle, params) {
-        var x1 = cx + r * Math.cos(-startAngle * rad),
+    Sector.prototype.drawSector = function (cx, cy, r1, r2, startAngle, endAngle, params) {
+        console.log(r1, r2);
+        var x1 = cx + r1 * Math.cos(-startAngle * rad),
             x2 = cx + r2 * Math.cos(-endAngle * rad),
-            y1 = cy + r * Math.sin(-startAngle * rad),
+            y1 = cy + r1 * Math.sin(-startAngle * rad),
             y2 = cy + r2 * Math.sin(-endAngle * rad);
-        return paper.path(["M", cx, cy, "L", x1, y1, "A", r, r2, 0, +(endAngle - startAngle > 180), 0, x2, y2, "z"]).attr(params);
+        return paper.path(["M", cx, cy, "L", x1, y1, "A", r1, r2, 0, +(endAngle - startAngle > 180), 0, x2, y2, "z"]).attr(params);
     };
 
     var chart = new Chart();
