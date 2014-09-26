@@ -1,6 +1,7 @@
 
 window.onload=function(){
     var elem = document.getElementById("paper");
+    //getDataFromJSON();
 
     var vls = [20, 10, 50, 10, 10],
         colors = ['#b1238d', '#c71057', '#fc7b06', '#ffc200', '#41baea'],
@@ -24,6 +25,18 @@ window.onload=function(){
     chart.bar(vls, options);
     //chart.pie(vls, options);
 };
+
+function getDataFromJSON() {
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function() {
+        if (request.readyState==4){
+            console.log(request.response);
+            return request.response;
+        }
+    };
+    request.open("GET", "data/charts_data.json", true);
+    request.send();
+}
 
 
 

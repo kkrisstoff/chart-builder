@@ -19,7 +19,8 @@
 
         var totalValue = countTotalValue(),
             angle = 0,
-            start = 0;
+            start = 0,
+            total = 0;
 
         function Chart() {
             this.c0 = [cX, cY];
@@ -82,11 +83,41 @@
         };
         Sector.prototype.drawSector = function (cx, cy, r1, r2, startAngle, endAngle, params) {
             console.log(r1, r2);
+            /*var rad = Math.PI / 180,
+                or = r1,
+                ir = r2,
+                ox1 = cx + or * Math.cos(-startAngle * rad),
+                ox2 = cx + or * Math.cos(-endAngle * rad),
+                ix1 = cx + ir * Math.cos(-startAngle * rad),
+                ix2 = cx + ir * Math.cos(-endAngle * rad),
+                xm = cx + or / 2 * Math.cos(-(startAngle + (endAngle - startAngle) / 2) * rad),
+                oy1 = cy + or * Math.sin(-startAngle * rad),
+                oy2 = cy + or * Math.sin(-endAngle * rad),
+                iy1 = cy + ir * Math.sin(-startAngle * rad),
+                iy2 = cy + ir * Math.sin(-endAngle * rad),
+                ym = cy + or / 2 * Math.sin(-(startAngle + (endAngle - startAngle) / 2) * rad),
+                res = [
+                    "M", ix1, iy1,
+                    "A", ir, ir, 0, +(Math.abs(endAngle - startAngle) > 180), 1, ix2, iy2,
+                    "L", ox2, oy2,
+                    "A", or, or, 0, +(Math.abs(endAngle - startAngle) > 180), 0, ox1, oy1,
+                    "z"
+                ];
+
+            res.middle = { x: xm, y: ym };*/
+
             var x1 = cx + r1 * Math.cos(-startAngle * rad),
                 x2 = cx + r2 * Math.cos(-endAngle * rad),
                 y1 = cy + r1 * Math.sin(-startAngle * rad),
-                y2 = cy + r2 * Math.sin(-endAngle * rad);
-            return paper.path(["M", cx, cy, "L", x1, y1, "A", r1, r2, 0, +(endAngle - startAngle > 180), 0, x2, y2, "z"]).attr(params);
+                y2 = cy + r2 * Math.sin(-endAngle * rad),
+                res = [
+                    "M", cx, cy,
+                    "L", x1, y1,
+                    "A", r1, r2, 0, +(endAngle - startAngle > 180), 0, x2, y2,
+                    "z"
+                ];
+
+            return paper.path(res).attr(params);
         };
 
         var chart = new Chart();

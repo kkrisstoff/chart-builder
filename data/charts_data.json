@@ -1,0 +1,28 @@
+
+    [
+        {
+            "value": "20%",
+            "color": "#b1238d",
+            "label": "tooltip1"
+        },
+        {
+            "value": "10%",
+            "color": "#c71057",
+            "label": "tooltip2"
+        },
+        {
+            "value": "30%",
+            "color": "#fc7b06",
+            "label": "tooltip3"
+        },
+        {
+            "value": "25%",
+            "color": "#ffc200",
+            "label": "tooltip4"
+        },
+        {
+            "value": "15%",
+            "color": "#41baea",
+            "label": "tooltip5"
+        }
+    ]
