@@ -10,26 +10,41 @@
             w = this.width,
             h = this.height,
             rad = Math.PI / 180,
-            chart = paper.set(),
+            /*chart = paper.set(),*/
             colors = opt.colors;
-
+        /* paper settings */
         var cX = w/2,
             cY = h/ 2,
             z = 30;
 
-        var totalValue = countTotalValue(),
-            angle = 0,
-            start = 0,
-            total = 0;
 
-        function Chart() {
-            this.c0 = [cX, cY];
-            this.rX = 80;
-            this.rY = opt.is3d ? 50 : r1;
-            this.sectors = [];
-            this.values = values;
+        /* Chart data */
+        var chart = {};
+        chart.c0 = [cX, cY];
+        chart.rX = 80;
+        chart.rY = opt.is3d ? 50 : this.rX;
+        chart.sectors = [];
+
+        chart.currentX = chart.c0[0] + chart.rX;
+        chart.currentY = chart.c0[1];
+
+        function createSectors() {
+            if (!values) {
+                console.log("your values is empty: (" + values.join(',') + ")");
+                return false;
+            }
+            var x0 = chart.c0[0],
+                y0 = chart.c0[1],
+                sector,
+                i,
+                currentAngle = 0;
+            for (i=0; values[i]; i+=1){
+                sector = new Sector(i, values[i], {x: x0, y: y0, rX: chart.rX, rY: chart.rY, angle: currentAngle});
+                currentAngle += 360*values[i]/100;
+                //sector.draw();
+                chart.sectors.push(sector);
+            }
         }
-
         /**
          *
          * @param i number
@@ -38,6 +53,7 @@
          * @constructor
          */
         function Sector (i, val, c) {
+            console.log(c, val);
             this.val = val;
             this.startAngle = c.angle;
             this.r1 = c.rX;
@@ -56,73 +72,33 @@
                 startAngle = this.startAngle,
                 endAngle = this.startAngle + angle;
 
-            this.sector = this.drawSector(this.x0, this.y0, this.r1, this.r2, startAngle, endAngle, param);
-            //var s = drawSector(cX, cY, r1, r2, angle, currentAngle, param);
-            //var s1 = drawSector(cX, cY - z, r1, r2, angle, currentAngle, param);
-            //s.toBack();
+            this.sector = this.drawSector(this.x0, this.y0, this.r1, this.r2, startAngle, endAngle, param, val);
         }
-        Chart.prototype.createSector = function () {
-            if (!this.values) {
-                console.log("your values is empty: (" + values.join(',') + ")");
-                return false;
+        Sector.prototype.drawSector = function (cx, cy, r1, r2, startAngle, endAngle, params, val) {
+            var endX = chart.currentX,
+                endY = chart.currentY,
+                largeArcFlag = calculateLargeArcFlag(val, 100);
+            this.startX = cx + r1 * Math.cos(endAngle * rad);
+            this.startY = cy + r2 * Math.sin(endAngle * rad);
+            console.log(this.startX, this.startY);
+            console.log(endX, endY);
+            var path = createPathForTopPart(this.startX, this.startY, endX, endY, largeArcFlag);
+            chart.currentX = this.startX;
+            chart.currentY = this.startY;
+            function createPathForTopPart(startX, startY, endX, endY, largeArcFlag) {
+                return ["M", cx, cy,
+                    "L", startX, startY,
+                    "A", r1, r2, "0", +(endAngle - startAngle > 180), "0", endX, endY,
+                    "L", cx, cy, "z" ].join(",");
             }
-            var x0 = this.c0[0],
-                y0 = this.c0[1],
-                r1 = this.r0,
-                valsLength = this.values.length,
-                sector,
-                i, currentAngle = 0;
-            for (i=0; i<valsLength; i+=1){
-
-                sector = new Sector(i, this.values[i], {x: x0, y: y0, rX: this.rX, rY: this.rY, angle: currentAngle});
-                currentAngle += 360*this.values[i]/100;
-                //sector.draw();
-                this.sectors.push(sector);
+            function calculateLargeArcFlag(val, total) {
+                return (total * val) < 180 ? 0 : 1;
             }
 
-        };
-        Sector.prototype.drawSector = function (cx, cy, r1, r2, startAngle, endAngle, params) {
-            console.log(r1, r2);
-            /*var rad = Math.PI / 180,
-                or = r1,
-                ir = r2,
-                ox1 = cx + or * Math.cos(-startAngle * rad),
-                ox2 = cx + or * Math.cos(-endAngle * rad),
-                ix1 = cx + ir * Math.cos(-startAngle * rad),
-                ix2 = cx + ir * Math.cos(-endAngle * rad),
-                xm = cx + or / 2 * Math.cos(-(startAngle + (endAngle - startAngle) / 2) * rad),
-                oy1 = cy + or * Math.sin(-startAngle * rad),
-                oy2 = cy + or * Math.sin(-endAngle * rad),
-                iy1 = cy + ir * Math.sin(-startAngle * rad),
-                iy2 = cy + ir * Math.sin(-endAngle * rad),
-                ym = cy + or / 2 * Math.sin(-(startAngle + (endAngle - startAngle) / 2) * rad),
-                res = [
-                    "M", ix1, iy1,
-                    "A", ir, ir, 0, +(Math.abs(endAngle - startAngle) > 180), 1, ix2, iy2,
-                    "L", ox2, oy2,
-                    "A", or, or, 0, +(Math.abs(endAngle - startAngle) > 180), 0, ox1, oy1,
-                    "z"
-                ];
-
-            res.middle = { x: xm, y: ym };*/
-
-            var x1 = cx + r1 * Math.cos(-startAngle * rad),
-                x2 = cx + r2 * Math.cos(-endAngle * rad),
-                y1 = cy + r1 * Math.sin(-startAngle * rad),
-                y2 = cy + r2 * Math.sin(-endAngle * rad),
-                res = [
-                    "M", cx, cy,
-                    "L", x1, y1,
-                    "A", r1, r2, 0, +(endAngle - startAngle > 180), 0, x2, y2,
-                    "z"
-                ];
-
-            return paper.path(res).attr(params);
+            return paper.path(path).attr(params);
         };
 
-        var chart = new Chart();
-        chart.createSector();
-
+        createSectors();
         // helpers
         function countTotalValue(){
             var i,
