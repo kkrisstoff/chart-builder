@@ -1,3 +1,6 @@
+/*
+Charting library, based on Raphaël
+ */
 (function(){
 
     /**
@@ -22,7 +25,8 @@
         var chart = {};
         chart.c0 = [cX, cY];
         chart.rX = 80;
-        chart.rY = opt.is3d ? 50 : this.rX;
+        chart.rY = opt.is3d ? 40 : chart.rX;
+        chart.height = opt.is3d ? 20 : 0;
         chart.sectors = [];
 
         chart.currentX = chart.c0[0] + chart.rX;
@@ -53,7 +57,7 @@
          * @constructor
          */
         function Sector (i, val, c) {
-            console.log(c, val);
+            //console.log(c, val);
             this.val = val;
             this.startAngle = c.angle;
             this.r1 = c.rX;
@@ -64,7 +68,11 @@
 
             var color = colors[i],
                 //color = Raphael.hsb(0.1, .75, 1),
-                param = {fill: color, stroke: "none", "stroke-width": 3};
+                param = {
+                    stroke: "#000",
+                    "stroke-width": 0.5,
+                    fill: color
+                };
 
             this.currentAngle = this.currentAngle || 0;
 
@@ -73,6 +81,7 @@
                 endAngle = this.startAngle + angle;
 
             this.sector = this.drawSector(this.x0, this.y0, this.r1, this.r2, startAngle, endAngle, param, val);
+            console.log(this.sector);
         }
         Sector.prototype.drawSector = function (cx, cy, r1, r2, startAngle, endAngle, params, val) {
             var endX = chart.currentX,
@@ -80,9 +89,11 @@
                 largeArcFlag = calculateLargeArcFlag(val, 100);
             this.startX = cx + r1 * Math.cos(endAngle * rad);
             this.startY = cy + r2 * Math.sin(endAngle * rad);
-            console.log(this.startX, this.startY);
-            console.log(endX, endY);
-            var path = createPathForTopPart(this.startX, this.startY, endX, endY, largeArcFlag);
+
+            var path = createPathForTopPart(this.startX, this.startY, endX, endY, largeArcFlag),
+                borderPath = createPathForBorderPart(this.startX, this.startY, endX, endY),
+                side1Path = createPathForSide1Part(this.startX, this.startY),
+                side2Path = createPathForSide2Part(this.startX, this.startY);
             chart.currentX = this.startX;
             chart.currentY = this.startY;
             function createPathForTopPart(startX, startY, endX, endY, largeArcFlag) {
@@ -91,11 +102,36 @@
                     "A", r1, r2, "0", +(endAngle - startAngle > 180), "0", endX, endY,
                     "L", cx, cy, "z" ].join(",");
             }
+            function createPathForBorderPart(startX, startY, endX, endY) {
+                return ["M", startX, startY,
+                    "A", r1, r2, "0", +(endAngle - startAngle > 180), "0", endX, endY,
+                    "L", endX, endY + chart.height,
+                    "A", r1, r2, "0", +(endAngle - startAngle > 180), "1", startX, startY + chart.height,
+                    "L", startX, startY, "z" ].join(",");
+
+            }
+            function createPathForSide1Part(startX, startY) {
+                return ["M", startX, startY,
+                    "L", cx, cy,
+                    "L", cx, cy + chart.height,
+                    "L", startX, startY + chart.height, "z"].join(",");
+            }
+            function createPathForSide2Part(endX, endY) {
+                return ["M", endX, endY,
+                    "L", cx, cy,
+                    "L", cx, cy + chart.height,
+                    "L", endX, endY + chart.height, "z"].join(",");
+            }
             function calculateLargeArcFlag(val, total) {
                 return (total * val) < 180 ? 0 : 1;
             }
 
-            return paper.path(path).attr(params);
+            console.log(startAngle, endAngle);
+            paper.path(borderPath).attr(params).toBack();
+            paper.path(side1Path).attr(params).toBack();
+            paper.path(side2Path).attr(params).toBack();
+            paper.path(path).attr(params);
+            return paper;
         };
 
         createSectors();
@@ -253,11 +289,19 @@
             }
             function top(x, y, w) {
                 var size3d = o.size3d;
-                return ["M", x, y, "L", x + size3d, y - size3d, "L", x + w + size3d, y - size3d, "L", x + w, y, "z"].join(",");
+                return [
+                    "M", x, y,
+                    "L", x + size3d, y - size3d,
+                    "L", x + w + size3d, y - size3d,
+                    "L", x + w, y, "z"].join(",");
             }
             function side(x, y, w, h) {
                 var size3d = o.size3d;
-                return ["M", x + w + size3d, y - size3d, "L", x + w + size3d, y + h - size3d, "L", x + w, y + h, "L", x + w, y, "z"].join(",");
+                return [
+                    "M", x + w + size3d, y - size3d,
+                    "L", x + w + size3d, y + h - size3d,
+                    "L", x + w, y + h,
+                    "L", x + w, y, "z"].join(",");
             }
         };
         Bar.prototype.drawRect = function(x, y, w, h, params){
