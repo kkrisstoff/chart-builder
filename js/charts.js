@@ -34,7 +34,7 @@ Charting library, based on Raphaël
 
         function createSectors() {
             if (!values) {
-                console.log("your values is empty: (" + values.join(',') + ")");
+                console.log("your values is empty: (" + values + ")");
                 return false;
             }
             var x0 = chart.c0[0],
@@ -44,6 +44,7 @@ Charting library, based on Raphaël
                 currentAngle = 0;
             for (i=0; values[i]; i+=1){
                 sector = new Sector(i, values[i], {x: x0, y: y0, rX: chart.rX, rY: chart.rY, angle: currentAngle});
+                //console.log(sector);
                 currentAngle += 360*values[i]/100;
                 //sector.draw();
                 chart.sectors.push(sector);
@@ -80,20 +81,20 @@ Charting library, based on Raphaël
                 startAngle = this.startAngle,
                 endAngle = this.startAngle + angle;
 
-            this.sector = this.drawSector(this.x0, this.y0, this.r1, this.r2, startAngle, endAngle, param, val);
-            console.log(this.sector);
+            return this.drawSector(this.x0, this.y0, this.r1, this.r2, startAngle, endAngle, param, val);
         }
         Sector.prototype.drawSector = function (cx, cy, r1, r2, startAngle, endAngle, params, val) {
             var endX = chart.currentX,
                 endY = chart.currentY,
-                largeArcFlag = calculateLargeArcFlag(val, 100);
+                largeArcFlag = calculateLargeArcFlag(val, 100),
+                sector = {};
             this.startX = cx + r1 * Math.cos(endAngle * rad);
             this.startY = cy + r2 * Math.sin(endAngle * rad);
 
             var path = createPathForTopPart(this.startX, this.startY, endX, endY, largeArcFlag),
                 borderPath = createPathForBorderPart(this.startX, this.startY, endX, endY),
-                side1Path = createPathForSide1Part(this.startX, this.startY),
-                side2Path = createPathForSide2Part(this.startX, this.startY);
+                rightSidePath = createPathForSide1Part(this.startX, this.startY),
+                leftSidePath = createPathForSide2Part(this.startX, this.startY);
             chart.currentX = this.startX;
             chart.currentY = this.startY;
             function createPathForTopPart(startX, startY, endX, endY, largeArcFlag) {
@@ -127,15 +128,46 @@ Charting library, based on Raphaël
             }
 
             console.log(startAngle, endAngle);
-            paper.path(borderPath).attr(params).toBack();
-            paper.path(side1Path).attr(params).toBack();
-            paper.path(side2Path).attr(params).toBack();
-            paper.path(path).attr(params);
-            return paper;
+            sector.border = paper.path(borderPath).attr(params).toBack();
+            sector.rSide = paper.path(rightSidePath).attr(params).toBack();
+            sector.lSide = paper.path(leftSidePath).attr(params).toBack();
+            sector.top = paper.path(path).attr(params);
+            return sector;
         };
 
         createSectors();
         // helpers
+
+        (function () {
+            var sectors = chart.sectors,
+                i, el;
+            for (i = 0; sectors[i]; i++){
+                var s = sectors[i];
+                for (el in s){
+                    console.log(s, el);
+                    if( s.hasOwnProperty(el) ) {
+                        s[el]
+                        .mouseover(function (e) {
+                            addOpacity(this);
+                        })
+                        .mouseout(function (e) {
+                            removeOpacity(this);
+                        })
+                    }
+                }
+            }
+            function addOpacity(s) {
+                s.attr({
+                    "fill-opacity": 0.6
+                });
+            }
+            function removeOpacity(s) {
+                s.attr({
+                    "fill-opacity": 1
+                });
+            }
+        })();
+
         function countTotalValue(){
             var i,
                 l = values.length,
