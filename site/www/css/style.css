@@ -1,0 +1,10 @@
+.row{
+    width: 100%;
+}
+.row .col3{
+    width: 33%;
+    float: left;
+    padding-left: 5px;
+    padding-right: 5px;
+    box-sizing: border-box;
+}

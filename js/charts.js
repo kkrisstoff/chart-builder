@@ -14,7 +14,9 @@ Charting library, based on Raphaël
             h = this.height,
             rad = Math.PI / 180,
             /*chart = paper.set(),*/
-            colors = opt.colors;
+            colors = opt.colors,
+
+            onSectorClicked = opt.onSectorClicked || function () {};
         /* paper settings */
         var cX = w/2,
             cY = h/ 2,
@@ -31,41 +33,24 @@ Charting library, based on Raphaël
 
         chart.currentX = chart.c0[0] + chart.rX;
         chart.currentY = chart.c0[1];
-
-        function createSectors() {
-            if (!values) {
-                console.log("your values is empty: (" + values + ")");
-                return false;
-            }
-            var x0 = chart.c0[0],
-                y0 = chart.c0[1],
-                sector,
-                i,
-                currentAngle = 0;
-            for (i=0; values[i]; i+=1){
-                sector = new Sector(i, values[i], {x: x0, y: y0, rX: chart.rX, rY: chart.rY, angle: currentAngle});
-                //console.log(sector);
-                currentAngle += 360*values[i]/100;
-                //sector.draw();
-                chart.sectors.push(sector);
-            }
-        }
         /**
          *
          * @param i number
          * @param val value
-         * @param c object
+         * @param currentAngle start angle
          * @constructor
          */
-        function Sector (i, val, c) {
+        function Sector (i, val, currentAngle) {
             //console.log(c, val);
-            this.val = val;
-            this.startAngle = c.angle;
-            this.r1 = c.rX;
-            this.r2 = c.rY;
+            /** general properties */
+            this.r1 = chart.rX;
+            this.r2 = chart.rY;
+            this.x0 = chart.c0[0];
+            this.y0 = chart.c0[1];
 
-            this.x0 = c.x;
-            this.y0 = c.y;
+            /** special properties */
+            this.val = val;
+            this.startAngle = currentAngle;
 
             var color = colors[i],
                 //color = Raphael.hsb(0.1, .75, 1),
@@ -74,8 +59,6 @@ Charting library, based on Raphaël
                     "stroke-width": 0.5,
                     fill: color
                 };
-
-            this.currentAngle = this.currentAngle || 0;
 
             var angle = 360*val/100,
                 startAngle = this.startAngle,
@@ -87,7 +70,7 @@ Charting library, based on Raphaël
             var endX = chart.currentX,
                 endY = chart.currentY,
                 largeArcFlag = calculateLargeArcFlag(val, 100),
-                sector = {};
+                sector = paper.set();
             this.startX = cx + r1 * Math.cos(endAngle * rad);
             this.startY = cy + r2 * Math.sin(endAngle * rad);
 
@@ -127,34 +110,51 @@ Charting library, based on Raphaël
                 return (total * val) < 180 ? 0 : 1;
             }
 
-            console.log(startAngle, endAngle);
-            sector.border = paper.path(borderPath).attr(params).toBack();
-            sector.rSide = paper.path(rightSidePath).attr(params).toBack();
-            sector.lSide = paper.path(leftSidePath).attr(params).toBack();
-            sector.top = paper.path(path).attr(params);
+            sector.push(paper.path(borderPath).attr(params));
+            sector.push(paper.path(path).attr(params).toFront());
+            sector.push(paper.path(leftSidePath).attr(params).toBack());
+            sector.push(paper.path(rightSidePath).attr(params).toBack());
             return sector;
         };
 
-        createSectors();
-        // helpers
+        function createSectors() {
+            if (!values) {
+                console.log("your values is empty: (" + values + ")");
+            }
+            var sector,
+                i,
+                currentAngle = 0;
+            for (i=0; values[i]; i+=1){
+                sector = new Sector(i, values[i], currentAngle);
+                currentAngle += 360*values[i]/100;
+                chart.sectors.push(sector);
+            }
+        }
 
-        (function () {
-            var sectors = chart.sectors,
+        createSectors();
+        addMouseEvents(chart.sectors);
+
+
+        // --- Mouse Events ---
+        /** add mouse events */
+        function addMouseEvents(chart) {
+            var sectors = chart,
                 i, el;
             for (i = 0; sectors[i]; i++){
                 var s = sectors[i];
-                for (el in s){
-                    console.log(s, el);
-                    if( s.hasOwnProperty(el) ) {
-                        s[el]
-                        .mouseover(function (e) {
-                            addOpacity(this);
-                        })
-                        .mouseout(function (e) {
-                            removeOpacity(this);
-                        })
-                    }
-                }
+                addMouseEvent(s);
+            }
+            function addMouseEvent(el) {
+                el
+                    .mouseover(function (e) {
+                        addOpacity(el);
+                    })
+                    .mouseout(function (e) {
+                        removeOpacity(el);
+                    })
+                    .click(function (e) {
+                        animateSlice(el);
+                    });
             }
             function addOpacity(s) {
                 s.attr({
@@ -166,18 +166,18 @@ Charting library, based on Raphaël
                     "fill-opacity": 1
                 });
             }
-        })();
-
-        function countTotalValue(){
-            var i,
-                l = values.length,
-                val = 0;
-            for (i = 0; i < l; i ++){
-                val += values[i];
-            }
-            return val || false;
         }
-
+        function animateSlice(s, xcord, ycord, speed) {
+            var sliceAnimation = Raphael.animation({transform: "T" + xcord + "," + ycord}, speed);
+            if (s.side1) {
+                s.top.animate(sliceAnimation);
+                s.side1.animateWith(s.top, sliceAnimation, sliceAnimation);
+                if (s.side2) s.side2.animateWith(s.top, sliceAnimation, sliceAnimation);
+                if (s.border) s.border.animateWith(s.top, sliceAnimation, sliceAnimation);
+            } else {
+                s.top.animate(sliceAnimation);
+            }
+        }
     };
 
 
@@ -223,7 +223,6 @@ Charting library, based on Raphaël
         /* draw Scale */
         drawScale(screenW, screenH, values);
         function drawScale (w, h, values) {
-
             var lineParams = {
                 stroke: "#ccd4e0",
                 "stroke-width": 0.5
