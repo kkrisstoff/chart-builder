@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
     var chart = Raphael(elem, canvasWidth, canvasHeight);
     //chart.bar(vls, options);
-    chart.pie(vls, options);
+    chart.bar(vls, options);
 
 
     var select = document.getElementById("chartType");
@@ -22,11 +22,12 @@ document.addEventListener('DOMContentLoaded', function(){
         labels = ['tooltip1', 'tooltip2', 'tooltip3', 'tooltip4', 'tooltip5'],
         options = {
             padding: 30,
-            is3d: true,
+            is3d: false,
             colors: colors,
             labels: labels,
             legendText: [],
             legendColors: [],
+            horizontal: false,
             onSectorClicked: function (e, n) {
                  console.log("sector " + n + " is clicked");
             }

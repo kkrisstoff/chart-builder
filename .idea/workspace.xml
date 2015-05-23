@@ -2,10 +2,238 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="848d23e3-73bc-4408-80ee-d7a86d8c55e4" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/charts.js" afterPath="$PROJECT_DIR$/libs/charts.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/.name" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/chart-builder.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/charts.js" afterPath="$PROJECT_DIR$/js/charts.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.js" afterPath="$PROJECT_DIR$/main.js" />
     </list>
     <ignored path="chart-builder.iws" />
     <ignored path=".idea/workspace.xml" />
+    <file path="/Dummy.txt" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1432296375128" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/pageable/pageable.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1416928627248" ignored="false" />
+    <file path="/pageable.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1414510361447" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/dialogs/dialog.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1416928089331" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/popup/dashboardPopup/dashboardPopup.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1413890774760" ignored="false" />
+    <file path="/dialog.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1416928089331" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/popup/providerSearch/providerSearch.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1408704012047" ignored="false" />
+    <file path="/providerSearch.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1408703474555" ignored="false" />
+    <file path="/a.dummy" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1417176534272" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/popup/dashboardPopup/dashboardPopup.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1408611504305" ignored="false" />
+    <file path="/dashboardPopup.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1408611494774" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/index.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1422472238476" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/bootstrap/icons/sprite.css" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1408611630043" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/member/member.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1422472238476" ignored="false" />
+    <file path="/dashboardPopup.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1408704078816" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/dashboard/charts/chart.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1410177824089" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/dashboard/charts/chart.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1408619811350" ignored="false" />
+    <file path="/chart.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1408619807069" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/assets/css/style-new.css" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1414485168692" ignored="false" />
+    <file path="/style-new.css" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1410185483201" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/dashboard/filters/filters.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1411715025572" ignored="false" />
+    <file path="/filters.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1410184792440" ignored="false" />
+    <file path="$USER_HOME$/Desktop/dashboard/source/views/navigation/main_tabs/main_tabs.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1408712972758" ignored="false" />
+    <file path="$USER_HOME$/Desktop/dashboard/index.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1408629091136" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/navigation/main_tabs/main_tabs.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1414412259695" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/dashboard/results/results.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1416932402731" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/dashboard/dashboard.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1408708894090" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/dashboard/results/results.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1410595101865" ignored="false" />
+    <file path="/results.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1410601443502" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/dashboard/dashboard.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1410594159405" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/models/localJSON/dashboard/dash.json" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1408708756474" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/header/header.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1411736274949" ignored="false" />
+    <file path="/main_tabs.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1414405510917" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/screens/mfa/login/step3/step3.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1408712390824" ignored="false" />
+    <file path="/step3.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1408710084020" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/member/member_search/memberSearch.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1416932402731" ignored="false" />
+    <file path="$USER_HOME$/Desktop/dashboard/source/views/screens/mfa/login/step3/step3.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1408712883288" ignored="false" />
+    <file path="$USER_HOME$/Desktop/dashboard/source/views/navigation/main_tabs/main_tabs.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1408713225253" ignored="false" />
+    <file path="$USER_HOME$/Desktop/dashboard/source/views/screens/main/main_screen.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1408713262740" ignored="false" />
+    <file path="$USER_HOME$/Desktop/dashboard/source/views/screens/main/main_screen.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1408713267025" ignored="false" />
+    <file path="$USER_HOME$/Desktop/dashboard/source/views/sections/header/header.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1408713435523" ignored="false" />
+    <file path="$USER_HOME$/Desktop/dashboard/source/views/sections/header/header.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1408713440106" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/dashboard/memberOverview/memberOverview.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1410433462084" ignored="false" />
+    <file path="/memberOverview.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1410424132132" ignored="false" />
+    <file path="/results.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1414142648587" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/models/DashboardPopupModel.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1409046977519" ignored="false" />
+    <file path="/charts.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1432409785090" ignored="false" />
+    <file path="/main.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1432408038894" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/libs/raphael-charts-0.2.1.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1422454644429" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/bootstrap/components/range/range.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1409921747810" ignored="false" />
+    <file path="/range.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1409921147892" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/dashboard/filters/filters.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1413886222112" ignored="false" />
+    <file path="/filters.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1410257038918" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/bootstrap/components/popup/popup.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1410247111707" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/index.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1411715025572" ignored="false" />
+    <file path="/raphael-charts-0.2.1.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1411365779169" ignored="false" />
+    <file path="/chart.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1410177817415" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/home/home.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1417082736877" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/member/assessments/assessments.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1416932402731" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/member/assessments/results/results.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1410601673276" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/member/assessments/assessments.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1416908645961" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/member/assessments/results/results.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1410601468101" ignored="false" />
+    <file path="/assessments.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1416825357384" ignored="false" />
+    <file path="/assessments.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1416826552660" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/member/assessments/assessment/assessment.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1410183339681" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/dashboard/memberOverview/memberOverview.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1413889820851" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/models/PopulationDropdowns.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1410187367900" ignored="false" />
+    <file path="/popup.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1410246501420" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/tooltip/tooltip.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1410189112635" ignored="false" />
+    <file path="/tooltip.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1410246513718" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/dashboard/tooltip/tooltip.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1410246806377" ignored="false" />
+    <file path="/index.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1410245714704" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/bootstrap/components/views/forms.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1410248924130" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/models/testJSON/dropdowns/Mtm.json" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1410250432372" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/member/pgi/problemView/problemView.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1414494300660" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/member/pgi/problemView/problemView.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1417082736877" ignored="false" />
+    <file path="/memberOverview.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1413889820851" ignored="false" />
+    <file path="/member.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1414072315564" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/models/Assessments.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1416826371231" ignored="false" />
+    <file path="/Assessments.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1416826167323" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/popup/dashboardProviderReport/dashboardProviderReport.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1410349546476" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/models/localJSON/assessments/assessments.json" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1410349728692" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/models/CareNotes.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1410422307053" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/member/notifications/flagCreate/flagCreate.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1410422307053" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/member/careNotes/careNotes.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1414417303717" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/models/Flags.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1410422307053" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/models/_config.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1410519067278" ignored="false" />
+    <file path="/_config.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1410514202780" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/member/careNotes/notes_summary/notes_summary.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1410536940886" ignored="false" />
+    <file path="/notes_summary.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1410534773136" ignored="false" />
+    <file path="/problemView.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1410541231531" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/models/localJSON/assessments/dropdowns/newAssessment" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1410598783544" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/models/localJSON/assessments/dropdowns/caseId.json" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1410598982259" ignored="false" />
+    <file path="/style.css" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1432409835086" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/member/assessments/startAssessment/startAssessment.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1416932402731" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/member/right_slide_block/bookmarks/bookmarks.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1416933789696" ignored="false" />
+    <file path="/bookmarks.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1414073466320" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/member/right_slide_block/bookmarks/Bookmarked/BookmarkedMember.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1414485168692" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/member/right_slide_block/right_slide_block.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1414068752820" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/member/right_slide_block/bookmarks/RecentlyView/RecentlyView.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1411715025572" ignored="false" />
+    <file path="/RecentlyView.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1411474531308" ignored="false" />
+    <file path="/BookmarkedMember.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1411474226737" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/member/right_slide_block/bookmarks/RecentlyView/RecentlyView.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1414070621168" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/member/assessments/newAssessment/newAssessment.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1417105033942" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/member/contact/contacts/contacts.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1414417829274" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/home/home.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1413886097332" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/member/summary/topWorklist/topWorklistItems.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1411479515426" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/member/summary/historyBlock/divisions/history_provider/history_provider.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1411479515426" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/dialogs/resultTable/resultTable.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1416913958636" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/bootstrap/parts/parts.css" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1411715025571" ignored="false" />
+    <file path="/parts.css" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1411480938175" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/member/assessments/startAssessment/startAssessment.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1413885887308" ignored="false" />
+    <file path="/startAssessment.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1413885884164" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/member/assessments/newAssessment/newAssessment.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1417171901573" ignored="false" />
+    <file path="/newAssessment.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1417171900408" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/models/localJSON/assessments/newAssessment.json" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1417079041413" ignored="false" />
+    <file path="/startAssessment.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1411570963913" ignored="false" />
+    <file path="/newAssessment.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1417104794178" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/models/localJSON/assessments/dropdowns/CaseIdDropdownsCol.json" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1411560463389" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/models/RecentlyView.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1416933789696" ignored="false" />
+    <file path="/RecentlyView.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1414421634599" ignored="false" />
+    <file path="/BookmarkedMembers.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1411571671409" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/models/BookmarkedMembers.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1411571802629" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/models/memberDetails.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1414487797032" ignored="false" />
+    <file path="/memberDetails.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1414063373524" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/member/assessments/newAssessment/response/response.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1417088222922" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/member/assessments/newAssessment/response/response.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1417167544169" ignored="false" />
+    <file path="/response.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1417088222922" ignored="false" />
+    <file path="/response.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1417167516672" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/dialogs/clear_tabs/clear_tabs.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1411715025572" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/dialogs/clear_tabs/clear_tabs.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1413893982544" ignored="false" />
+    <file path="/clear_tabs.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1411654650757" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/libs/rad.build.new.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1411654033010" ignored="false" />
+    <file path="/rad.build.new.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1411653899908" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/bootstrap/components/zoomer/zoomer.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1411715025571" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/member/right_slide_block/bookmarks/Bookmarked/BookmarkedMember.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1414494454176" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/application/application.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1416932402730" ignored="false" />
+    <file path="/application.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1411738270084" ignored="false" />
+    <file path="/network.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1411733776227" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/services/network/network.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1413987676751" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/screens/main/main_screen.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1411735761156" ignored="false" />
+    <file path="/main_screen.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1411733612487" ignored="false" />
+    <file path="/right_slide_block.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1411735829493" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/header/header.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1411736039862" ignored="false" />
+    <file path="/header.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1411736024113" ignored="false" />
+    <file path="/header.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1411736223271" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/navigation/main_tabs/main_tabs.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1414078217465" ignored="false" />
+    <file path="/main_tabs.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1414076187134" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/member/member_search/memberSearch.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1413987676751" ignored="false" />
+    <file path="/charts_data.json" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1411742849043" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/bootstrap/components/select_new/select.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1414416961204" ignored="false" />
+    <file path="/select.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1414416943533" ignored="false" />
+    <file path="/home.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1413886071206" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/member/member.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1414502027894" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/libs/tag.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1413899462037" ignored="false" />
+    <file path="/tag.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1413899458832" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/member/careNotes/careNotes.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1414510846950" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/member/notifications/flagCreate/flagCreate.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1413908301406" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/member/notifications/flagsSummary/flagsSummary.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1414144957916" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/member/right_slide_block/bookmarks/bookmarks.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1414052174560" ignored="false" />
+    <file path="/problemView.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1414144597454" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/member/pgi/problemView/filterBlock/filterBlock.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1414145127655" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/member/pgi/problemView/filterBlock/filterBlock.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1414510846950" ignored="false" />
+    <file path="/filterBlock.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1414153702390" ignored="false" />
+    <file path="/careNotes.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1414401158506" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/member/assessments/viewAssessments/viewAssessments.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1414406742318" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/member/careNotes/addNote/addNote.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1414417537974" ignored="false" />
+    <file path="/careNotes.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1414417189025" ignored="false" />
+    <file path="/home.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1414410993054" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/member/notifications/flagsSummary/flagsSummary.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1422097112360" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/member/contact/contacts/contacts.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1414417956970" ignored="false" />
+    <file path="$USER_HOME$/Dropbox/javascript/node/chartrooms/package.json" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1414419132220" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/libs/utils.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1414484995395" ignored="false" />
+    <file path="/utils.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1417100307962" ignored="false" />
+    <file path="/memberSearch.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1414495922002" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/models/Member.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1414498008743" ignored="false" />
+    <file path="/Member.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1414497843956" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/member/pgi/pgi.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1414510846950" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/member/assessments/assessmentDetails/assessmentDetails.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1416932402731" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/models/localJSON/assessments/assessmentDetails.json" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1416826997731" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/member/assessments/assessmentDetails/assessmentDetails.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1416828148421" ignored="false" />
+    <file path="/assessmentDetails.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1416828136649" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/models/JSON_for_demo/member_pgi_intervention.json" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1416843673128" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/member/pgi/interventionView/interventionResults/interventionResults.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1416844150646" ignored="false" />
+    <file path="/interventionResults.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1416843975750" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/models/localJSON/assessments/newAssessmentHistory.json" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1416920815716" ignored="false" />
+    <file path="/index.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1432301327363" ignored="false" />
+    <file path="/resultTable.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1416913264846" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/dialogs/resultTable/resultTable.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1416913950451" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/popup/assessmentHistory/assessmentHistory.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1416921070451" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/popup/assessmentHistory/assessmentHistory.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1416921348138" ignored="false" />
+    <file path="/assessmentHistory.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1416921327458" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/member/pgi/interventionView/interventionResults/interventionResults.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1416932402730" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/member/pgi/interventionView/interventionView.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1416932402731" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/settings.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1417008661207" ignored="false" />
+    <file path="/settings.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1417008623281" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/models/localJSON/assessments/newAssessmentOld.json" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1417079035257" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/member/summary/gapsInCare/gapsInCare.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1417098862165" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/member/summary/historyBlock/historyBlock.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1417179109880" ignored="false" />
+    <file path="/historyBlock.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1417179094315" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/member/summary/historyBlock/historyBlock.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1417179143289" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/member/summary/conditionCenter/conditionCenterSummary/conditionCenterSummary.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1422107987699" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/member/summary/conditionCenter/conditionCenterSummary/conditionCenterSummary.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1422109426114" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/member/summary/conditionCenter/newConditionCenter/newConditionCenter.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1422109434272" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/member/summary/conditionCenter/conditionCenter.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1422109663197" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/member/summary/conditionCenter/newConditionCenter/newConditionCenter.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1422471790743" ignored="false" />
+    <file path="/newConditionCenter.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1422109627292" ignored="false" />
+    <file path="/conditionCenter.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1422109660579" ignored="false" />
+    <file path="/*.regexp" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1422369848777" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/source/views/sections/member/summary/historyBlock/divisions/condition_center/condition_center.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1422381812462" ignored="false" />
+    <file path="/condition_center.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1422381809808" ignored="false" />
+    <file path="/script.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1432303296883" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/build/source/assets/css/style.min.css" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1422472238476" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/Gruntfile.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1422472238476" ignored="false" />
+    <file path="$PROJECT_DIR$/../upmc-revised-ui/build/source/build.min.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1422472238476" ignored="false" />
+    <file path="$PROJECT_DIR$/../UPMC/eworkwell/markup/js/script.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1432303305193" ignored="false" />
+    <file path="$PROJECT_DIR$/../UPMC/eworkwell/markup/index.html" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1432301329062" ignored="false" />
+    <file path="$PROJECT_DIR$/../UPMC/eworkwell/markup/js/charts.js" changelist="848d23e3-73bc-4408-80ee-d7a86d8c55e4" time="1432306708584" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,16 +256,81 @@
       <file leaf-file-name="main.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="2" selection-start="501" selection-end="501" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="675">
+            <state line="29" column="29" selection-start="895" selection-end="895" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="116" selection-start="353" selection-end="353" vertical-scroll-proportion="-6.25">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="charts_data.json" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/charts_data.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="19" column="31" selection-start="415" selection-end="415" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="style.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/css/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="105" column="0" selection-start="2219" selection-end="2219" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="charts.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/libs/charts.js">
+        <entry file="file://$PROJECT_DIR$/js/charts.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="269" column="5" selection-start="7822" selection-end="7822" vertical-scroll-proportion="0.63193655" vertical-offset="6167" max-vertical-offset="7050">
+            <state line="258" column="136" selection-start="8698" selection-end="8698" vertical-scroll-proportion="0.9249364">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/site/www/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="37" column="10" selection-start="1053" selection-end="1053" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="script.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/site/www/script.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="21" column="67" selection-start="751" selection-end="751" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="style.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/site/www/css/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="27" selection-start="144" selection-end="144" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="5" selection-start="5" selection-end="5" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -54,19 +347,33 @@
     <option name="SYNC_SETTING" value="DONT" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitLogSettings">
+    <option name="myDateState">
+      <MyDateState />
+    </option>
+  </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/main.js" />
+        <option value="$PROJECT_DIR$/data/charts_data.json" />
         <option value="$PROJECT_DIR$/libs/charts.js" />
+        <option value="$PROJECT_DIR$/css/style.css" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/demo/script.js" />
+        <option value="$PROJECT_DIR$/site/www/script.js" />
+        <option value="$PROJECT_DIR$/site/www/index.html" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/main.js" />
+        <option value="$PROJECT_DIR$/site/www/css/style.css" />
+        <option value="$PROJECT_DIR$/js/charts.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="x" value="182" />
+    <option name="y" value="65" />
+    <option name="width" value="1831" />
+    <option name="height" value="930" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -86,7 +393,7 @@
       <flattenPackages />
       <showMembers />
       <showModules />
-      <showLibraryContents />
+      <showLibraryContents ProjectPane="true" />
       <hideEmptyPackages />
       <abbreviatePackageNames />
       <autoscrollToSource />
@@ -94,7 +401,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -123,22 +429,114 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="site" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chart-builder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chart-builder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="site" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="www" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chart-builder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chart-builder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="libs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chart-builder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chart-builder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chart-builder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chart-builder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chart-builder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chart-builder" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../upmc-revised-ui" />
-    <property name="options.lastSelected" value="preferences.externalTools" />
     <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="options.searchVisible" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="options.lastSelected" value="preferences.externalTools" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Dropbox/javascript/node/chartrooms" />
     <property name="FullScreen" value="false" />
+    <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/demo" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/site/www" />
+      <recent name="$PROJECT_DIR$/js" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
@@ -149,16 +547,6 @@
       <option name="testName" />
       <method />
     </configuration>
-    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
-      <option name="VMOptions" />
-      <option name="arguments" />
-      <option name="filePath" />
-      <option name="name" value="Dart" />
-      <option name="saveOutputToFile" value="false" />
-      <option name="showConsoleOnStdErr" value="false" />
-      <option name="showConsoleOnStdOut" value="false" />
-      <method />
-    </configuration>
     <configuration default="true" type="JSTestDriver:ConfigurationType" factoryName="JsTestDriver">
       <setting name="configLocationType" value="CONFIG_FILE" />
       <setting name="settingsFile" value="" />
@@ -166,15 +554,14 @@
       <setting name="preferredDebugBrowser" value="CHROME" />
       <method />
     </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
-      <method />
-    </configuration>
     <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" working-dir="">
-      <browser start="false" url="" with-js-debugger="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugSession" factoryName="Local" singleton="true">
+      <JSDebuggerConfigurationSettings>
+        <option name="engineId" value="embedded" />
+        <option name="fileUrl" />
+      </JSDebuggerConfigurationSettings>
       <method />
     </configuration>
     <list size="0" />
@@ -189,20 +576,20 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="182" y="65" width="1831" height="930" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24973656" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13329646" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -220,25 +607,180 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="CHECK_NEW_TODO" value="true" />
     <option name="myTodoPanelSettings">
-      <TodoPanelSettings />
+      <value>
+        <are-packages-shown value="false" />
+        <are-modules-shown value="false" />
+        <flatten-packages value="false" />
+        <is-autoscroll-to-source value="false" />
+      </value>
     </option>
+    <option name="PERFORM_UPDATE_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_COMMIT_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_EDIT_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_CHECKOUT_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_ADD_REMOVE_IN_BACKGROUND" value="true" />
+    <option name="PERFORM_ROLLBACK_IN_BACKGROUND" value="false" />
+    <option name="CHECK_LOCALLY_CHANGED_CONFLICTS_IN_BACKGROUND" value="false" />
+    <option name="CHANGED_ON_SERVER_INTERVAL" value="60" />
+    <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
+    <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
+    <option name="DEFAULT_PATCH_EXTENSION" value="patch" />
+    <option name="SHORT_DIFF_HORIZONTALLY" value="true" />
+    <option name="SHORT_DIFF_EXTRA_LINES" value="2" />
+    <option name="SOFT_WRAPS_IN_SHORT_DIFF" value="true" />
+    <option name="INCLUDE_TEXT_INTO_PATCH" value="false" />
+    <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
+    <option name="SHOW_FILE_HISTORY_DETAILS" value="true" />
+    <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
+    <option name="SHOW_DIRTY_RECURSIVELY" value="false" />
+    <option name="LIMIT_HISTORY" value="true" />
+    <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
+    <option name="UPDATE_FILTER_SCOPE_NAME" />
+    <option name="USE_COMMIT_MESSAGE_MARGIN" value="false" />
+    <option name="COMMIT_MESSAGE_MARGIN_SIZE" value="72" />
+    <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
+    <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
+    <option name="LAST_COMMIT_MESSAGE" />
+    <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="REFORMAT_BEFORE_FILE_COMMIT" value="false" />
+    <option name="FILE_HISTORY_DIALOG_COMMENTS_SPLITTER_PROPORTION" value="0.8" />
+    <option name="FILE_HISTORY_DIALOG_SPLITTER_PROPORTION" value="0.5" />
+    <option name="ACTIVE_VCS_NAME" />
+    <option name="UPDATE_GROUP_BY_PACKAGES" value="false" />
+    <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
+    <option name="UPDATE_FILTER_BY_SCOPE" value="false" />
+    <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
+    <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/js/charts.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="278" column="197" selection-start="8058" selection-end="8058" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="2" selection-start="501" selection-end="501" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="675">
+        <state line="17" column="2" selection-start="573" selection-end="573" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/libs/charts.js">
+    <entry file="file://$PROJECT_DIR$/js/charts.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="269" column="5" selection-start="7822" selection-end="7822" vertical-scroll-proportion="0.63193655" vertical-offset="6167" max-vertical-offset="7050">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/charts.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="269" column="5" selection-start="7821" selection-end="7821" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libs/raphael.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-45.672962">
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/charts_data.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="31" selection-start="415" selection-end="415" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavascriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/DHTML.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1547" column="23" selection-start="24903" selection-end="24903" vertical-scroll-proportion="0.33333334" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="105" column="0" selection-start="2219" selection-end="2219" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site/www/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="67" selection-start="751" selection-end="751" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site/www/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="10" selection-start="1053" selection-end="1053" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="5" selection-start="5" selection-end="5" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="116" selection-start="353" selection-end="353" vertical-scroll-proportion="-6.25">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="29" selection-start="895" selection-end="895" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site/www/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="27" selection-start="144" selection-end="144" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/charts.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="258" column="136" selection-start="8698" selection-end="8698" vertical-scroll-proportion="0.9249364">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
