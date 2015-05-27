@@ -17,12 +17,12 @@ document.addEventListener('DOMContentLoaded', function(){
     });
 
 });
-    var vls = [20, 10, 50, 10, 10],
+    var vls = [29, 12, 48, 10, 14],
         colors = ['#b1238d', '#c71057', '#fc7b06', '#ffc200', '#41baea'],
         labels = ['tooltip1', 'tooltip2', 'tooltip3', 'tooltip4', 'tooltip5'],
         options = {
-            padding: 30,
-            is3d: false,
+            padding: 10,
+            is3d: true,
             colors: colors,
             labels: labels,
             legendText: [],

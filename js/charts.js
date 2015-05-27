@@ -197,17 +197,22 @@ Charting library, based on Raphaël
             paddingY: opt.paddingY || 0, //todo: is it needs?
 
             is3d: opt.is3d,
-            size3d: opt.is3d ? options.size3d || 0 : 0,   //10
+            type3d: 'cuboid', //'cuboid', 'cylinder'
+            size3d: opt.is3d ? opt.size3d || 10 : 0,   //10
+
+            max: 0,
+            roundingUp: opt.rounding || 10,
 
             colors: opt.colors,
+            darkColors: [],
+            lightColors: [],
+
             legendText: opt.legendText || options.labels || [],
             legendColors: opt.legendColors || [],
             labels: opt.labels || [],
 
             onSectorClicked: opt.onSectorClicked || function () { },
 
-            darkColors: [],
-            lightColors: [],
             horizontal: options.horizontal || false,
             tooltip: options.tooltip || false,
             backgroundFill: options.backgroundFill || ["#fff", "#fff"],
@@ -232,103 +237,43 @@ Charting library, based on Raphaël
             fill: "#777"
         };
 
-        /* draw Scale */
-        drawScale(screenW, screenH, values);
-        function drawScale (w, h, values) {
-            var lineParams = {
-                stroke: "#ccd4e0",
-                "stroke-width": 0.5
-            };
-            var axisParams = {
-                stroke: "#ccd4e0",
-                "stroke-width": 1
-            };
-            var shadowParams = {
-                stroke: "#ccd4e0",
-                "stroke-width": 0.5,
-                fill: "#ccd4e0"
-            };
+        calculateMaxValueAndUsedColors();
+        function calculateMaxValueAndUsedColors() {
+            Raphael.getColor.reset();
 
-            var maxScaleY = calculateMaxScaleY(),
-                scale = createScale(maxScaleY);
-
-            paper.stngs.scaleY = maxScaleY;
-
-            drawAxis();
-            drawDivisions(maxScaleY);
-
-
-            function makeLinePath(direction, xStart, yStart) {
-                var m = {
-                    'v': [xStart, 0],
-                    'h': [w, yStart]
-                };
-                return [
-                    "M", xStart, yStart,
-                    "L", m[direction][0], m[direction][1]
-                ]
-            }
-
-            function calculateMaxScaleY (){
-                var maxVal = values.reduce(function (previousNum, currentNum) {
-                    return (previousNum < currentNum) ? currentNum : previousNum;
-                }, 0);
-                return (((maxVal + 10) / 10) >> 0) * 10
-            }
-
-            function createScale (maxScale) {
-                var arr = [];
-                while (maxScale >= 0) {
-                    arr.push(maxScale);
-                    maxScale -= 10;
+            for (var i = 0; i < values.length; i++) {
+                if (values[i] > o.max) {
+                    o.max = values[i];
                 }
-                return arr.reverse();
-            }
+                if (o.colors[i] == undefined) o.colors[i] = Raphael.getColor();
 
-            function drawAxis() {
-                paper.path(makeLinePath('h', x0, y0)).attr(axisParams);
-                paper.path(makeLinePath('v', x0, y0)).attr(axisParams);
+                o.darkColors[i] = utils.calculateDarkColor(o.colors[i]);
+                o.lightColors[i] = utils.calculateLightColor(o.colors[i]);
             }
-            function drawDivisions (maxScaleY) {
-                var numOfDivisions = 3,
-                    numOfSubs = 5,
-                    i, j;
-                for (i = 1; i <= numOfDivisions; i++){
-                    var y = screenH - screenH/numOfDivisions*i;
-                    paper.path(makeLinePath('h', x0, y)).attr(lineParams);
-                    paper.text(x0 - 15, y, ''+maxScaleY/numOfDivisions*i+'%');
-                    for (j = 1; j < numOfSubs; j++){
-                        paper.path(makeLinePath('h', x0, y + screenH/numOfDivisions/numOfSubs*j)).attr(lineParams);
-                    }
-                }
-            }
-
         }
 
-
-
         var numberOfValues = values.length,
-            padding = 5,
+            padding = 10,//space between bars / 2
+            bottomPartWidth = o.horizontal ? screenH : screenW,
+            barPlace = Math.floor((bottomPartWidth - padding * 2) / numberOfValues),//place for each bar
+            maxValueRounded = utils.calculateMaxValue(values, 10),
             bars = [],
-            maxp = 0,
-            np = 0, //place for each bar
+
             x, y,
-            cy = h,
-            cx = w;
+            h, w;
 
         if (o.horizontal) {
-            np = Math.floor((cy - padding * 2) / numberOfValues);
-            //if (o.size3d == -1) o.size3d = np / 4;
-            maxp = cx - o.size3d - padding * 2;
-            h = ( np / 1.5 < 20 ) ? np / 1.5 : 20;
-            y = (np - h + o.size3d) / 2;
-            x = padding + o.size3d;
+            if (o.is3d && !o.size3d) o.size3d = barPlace / 4;
+
+            h = /*barPlace - 2 * padding;*/(barPlace / 1.5 < 20) ? barPlace / 1.5 : 20;
+            y = y0 - (h + padding * 2);
+            x = x0;
         } else {
-            np = (cx - padding * 2) / numberOfValues;
-            //if (o.size3d == -1) o.size3d = np / 4;
-            maxp = cy - o.size3d - padding * 2;
-            w = ( np / 1.5 < 30 ) ? np / 1.5 : 30;
-            x = (np - w + o.size3d) / 2;
+            if (o.is3d && !o.size3d) o.size3d = barPlace / 4;
+
+            w = /*barPlace - 2 * padding;*/(barPlace / 1.5 < 30) ? barPlace / 1.5 : 30;
+            x = x0 + padding * 2//(barPlace - w + o.size3d) / 2;
+            y = screenH;
         }
 
         for (var i = 0; i < numberOfValues; i++) {
@@ -336,88 +281,68 @@ Charting library, based on Raphaël
             var emulation;
 
             if (o.horizontal) {
-                w = (maxp /*/ o.max*/) * values[i];
+                w = (screenW / maxValueRounded) * values[i];
 
                 var radiusX = h / 6,
                     radiusY = h / 2;
 
-                console.log(x, y, h);
+                console.log(x, y, w, h);
                 var frontPathStart = [
                     "M", x, y,
                     "L", x, y,
-
                     "L", x, (y + h),
-
+                    "L", x, (y + h),
                     "Z"];
 
                 var frontPathEnd = [
                     "M", x, y,
                     "L", (x + w), y,
-                    "A", radiusX, radiusY, 0, 0, 0, (x + w), (y + h),
+                    "L", (x + w), (y + h),
                     "L", x, (y + h),
-                    "A", radiusX, radiusY, 0, 0, 1, x, y,
-                    "z"];
+                    "Z"];
 
-                var topPathStart = [
-                    "M", x, y,
-                    "A", radiusX, radiusY, 0, 0, 0, x, (y + h),
-                    "z"];
-
-                var topPathEnd = [
-                    "M", (x + w), y,
-                    "A", radiusX, radiusY, 0, 0, 0, (x + w), (y + h),
-                    "z"];
-
-                var bottomPath = [
-                    "M", x, y,
-                    "A", radiusX, radiusY, 0, 0, 0, x, (y + h),
-                    "z"];
-
-                parameters.fill = o.colors[i];
+                barParameters.fill = o.colors[i];
                 var frontPart = paper.path(frontPathStart)
-                    .attr(parameters);
+                    .attr(barParameters);
 
                 frontPart.animate({path: frontPathEnd}, o.animateTime);
-                //topPart.animate({path: topPathEnd}, o.animateTime);
                 emulation = paper.rect(x, y, w, h);
             } else {
-                h = (maxp / o.max) * values[i];
-                y = padding + maxp + o.size3d;
+                h = (screenH / maxValueRounded) * values[i];
+
 
                 var radiusX = w / 2,
                     radiusY = w / 6,
                     centerX = x + radiusX,
                     centerY = y;
 
-                console.log(x, y, h);
-                var frontPathStart = [
-                    "M", x, y,
-                    "L", x, y,
-                    //"A", radiusX, radiusY, 0, 0, 0, (x + w), y,
-                    "L", (x + w), y,
-                    //"A", radiusX, radiusY, 0, 0, 1, x, y,
-                    "z"];
+                console.log(x, y, w, h);
+                var frontPathStart = createBarPath('front', [x, y, w, 0]);
 
-                var frontPathEnd = [
-                    "M", x, y,
-                    "L", x, (y - h),
-                    //"A", radiusX, radiusY, 0, 0, 0, (x + w), (y - h),
-                    "L", (x + w), y,
-                    //"A", radiusX, radiusY, 0, 0, 1, x, y,
-                    "z"];
+                var frontPathEnd = createBarPath('front', [x, y, w, h]);
 
-//                topPart = paper.ellipse(centerX, centerY , radiusX, radiusY)
-//                    .attr(cylinderSideAttr);
+                barParameters.fill = o.colors[i];
+                if (o.is3d){
+                    var topPathStart = createBarPath('top', [x, y, w]);
+                    var topPathEnd = createBarPath('top', [x, y - h, w]);
+                    var sidePathStart = createBarPath('side', [x, y, w, 0]);
+                    var sidePathEnd = createBarPath('side', [x, y, w, h]);
+                    var buttonPath = createBarPath('top', [x, y, w]);
 
-//                bottomPart = paper.ellipse(centerX, centerY , radiusX, radiusY)
-//                    .attr(cylinderSideAttr);
+                    var topPart = paper.path(topPathStart).attr(barParameters);
+                    var sidePart = paper.path(sidePathStart).attr(barParameters);
+                    var buttonPart = paper.path(buttonPath).attr(barParameters).toBack();
+                }
 
-                parameters.fill = o.colors[i];
                 frontPart = paper.path(frontPathStart)
-                    .attr(parameters);
+                    .attr(barParameters);
 
                 frontPart.animate({path: frontPathEnd}, o.animateTime);
-                //topPart.animate({cy: y - h}, o.animateTime);
+                if (o.is3d){
+                    topPart.animate({path: topPathEnd}, o.animateTime);
+                    sidePart.animate({path: sidePathEnd}, o.animateTime);
+                }
+
                 emulation = paper.rect(x, y - h, w, h)
             }
 
@@ -443,7 +368,53 @@ Charting library, based on Raphaël
                         showTooltip(this.num, false);
                     });
             }
-            (o.horizontal) ? y += np : x += np;
+            (o.horizontal) ? y -= barPlace : x += barPlace;
+        }
+        /**
+         *
+         * @param type
+         * @param params arr [x, y, w, h]
+         * @returns {*}
+         */
+        function createBarPath(type, params) {
+            var types = {
+                front: front,
+                top: top,
+                side: side
+            };
+            if (typeof types[type] == "function"){
+                return types[type].apply(this, params);
+            }
+            function front(x, y, w, h){
+                var size3d = o.size3d || 0;
+                return [
+                    "M", x - size3d, y + size3d,
+                    "L", x - size3d, y - h + size3d,
+                    "L", x - size3d + w, y + size3d - h,
+                    "L", x - size3d + w, y + size3d,
+                    "Z"
+                ].join(",");
+            }
+            function top(x, y, w) {
+                var size3d = o.size3d || 0;
+                return [
+                    "M", x, y,
+                    "L", x - size3d, y + size3d,
+                    "L", x + w - size3d, y + size3d,
+                    "L", x + w, y,
+                    "Z"
+                ].join(",");
+            }
+            function side(x, y, w, h) {
+                var size3d = o.size3d || 0;
+                return [
+                    "M", x + w - size3d, y + size3d,
+                    "L", x + w - size3d, y - h + size3d,
+                    "L", x + w, y - h,
+                    "L", x + w, y,
+                    "Z"
+                ].join(",");
+            }
         }
 
 
@@ -556,6 +527,9 @@ Charting library, based on Raphaël
             }
         }
 
+
+
+
         //tooltip
         function showTooltip(e, num){
             var tooltip = createTooltip(),
@@ -583,11 +557,23 @@ Charting library, based on Raphaël
 
         }
 
-
         function getCanvasMaxScale(){
             return paper.stngs.scaleY;
         }
 
+        //scale
+        var isHorizontal = o.horizontal,
+            scaleParams = {
+                type: isHorizontal ? 'horizontal' : 'vertical',
+                isHorizontal: isHorizontal,
+                values: values,
+                labels: o.labels,
+                padding: o.is3d ? padding + o.size3d : padding,
+                hGrids: isHorizontal ? 0 : 4,
+                vGrids: isHorizontal ? 4 : 0
+            };
+
+        var scale = drawScale(paper, scaleParams);
 
         //legend
         (function(){
@@ -602,12 +588,198 @@ Charting library, based on Raphaël
             createLegend(el, o);
         })();
 
-
-
     };
 
+    /* --- Utils --- */
+    var utils = (function () {
+        function toHex(N) {
+            if (N == null)
+                return "00";
+            N = parseInt(N);
+            if (N == 0 || isNaN(N))
+                return "00";
+            N = Math.max(0, N);
+            N = Math.min(N, 255);
+            N = Math.round(N);
+            return "0123456789ABCDEF".charAt((N - N % 16) / 16)
+                + "0123456789ABCDEF".charAt(N % 16);
+        }
+        return {
+            calculateDarkColor: function (color) {
+                var c = Raphael.getRGB(color);
+                var r = parseInt(c.r) - 36;
+                var g = parseInt(c.g) - 30;
+                var b = parseInt(c.b) - 24;
+                return "#" + toHex(r) + toHex(g) + toHex(b);
+            },
 
-    // --- legend ---
+            calculateLightColor: function (color) {
+                var c = Raphael.getRGB(color);
+                var r = parseInt(c.r) + 36;
+                var g = parseInt(c.g) + 30;
+                var b = parseInt(c.b) + 24;
+                return "#" + toHex(r) + toHex(g) + toHex(b);
+            },
+
+            calculateMaxValue: function (vals, round){
+                var maxVal = vals.reduce(function (previousNum, currentNum) {
+                    return (previousNum < currentNum) ? currentNum : previousNum;
+                }, 0);
+                return (round && typeof +round == 'number') ?   //10
+                    maxVal : (((maxVal + 10) / 10) >> 0) * 10
+            }
+        }
+    })();
+
+    /* --- Scale --- */
+    function drawScale (paper, params) {
+
+        var paperWidth = paper.width,
+            paperHeight = paper.height,
+            x0 = params.padding,
+            y0 = paperHeight - params.padding,
+            screenW = paperWidth - x0,
+            screenH = y0,
+            values = params.values,
+            valuesX = null, valuesY = null,
+            labels = params.labels,
+            numOfVals = values.length,
+            maxScale = calculateMaxScale(values),
+            type = params.type;
+
+        if (type == 'curve'){
+            valuesX = values[0];
+            valuesY = values[1];
+            var maxScaleX = calculateMaxScale(valuesX);
+            var maxScaleY = calculateMaxScale(valuesY);
+        }
+        console.log(values);
+        var lineParams = {
+            stroke: "#ccd4e0",
+            "stroke-width": 0.5
+        };
+        var axisParams = {
+            stroke: "#ccd4e0",
+            "stroke-width": 1
+        };
+        var shadowParams = {
+            stroke: "#ccd4e0",
+            "stroke-width": 0.5,
+            fill: "#ccd4e0"
+        };
+
+        drawAxis();
+        drawDivisions(maxScale);
+
+        function calculateMaxScale (vals){
+            var maxVal = vals.reduce(function (previousNum, currentNum) {
+                return (previousNum < currentNum) ? currentNum : previousNum;
+            }, 0);
+            return maxVal;//(((maxVal + 10) / 10) >> 0) * 10
+        }
+
+        var scale = createScale(maxScale);
+        function createScale (maxScale) {
+            var arr = [];
+            while (maxScale >= 0) {
+                arr.push(maxScale);
+                maxScale -= 10;
+            }
+            return arr.reverse();
+        }
+
+        function drawAxis() {
+            paper.path(makeLinePath('h', x0, y0)).attr(axisParams);
+            paper.path(makeLinePath('v', x0, y0)).attr(axisParams);
+        }
+        function drawDivisions (maxScale) {
+            var hNumOfDivisions = params.hGrids,
+                vNumOfDivisions = params.vGrids,
+                numOfSubs = 0,
+                i, j;
+            horizontalDivisions();
+            verticalDivisions();
+
+            if (type == 'vertical'){
+                for(j = 0; j < numOfVals; j++){
+                    console.log(labels[j]);
+                    var x = x0 + screenW/numOfVals * j;
+                    paper.text(x + screenW/numOfVals/2 - 5, y0 + 5, labels[j]);
+                }
+            } else if (type == 'horizontal'){
+                drawLabels();
+            }
+
+            function horizontalDivisions() {
+                var max = maxScaleY || maxScale;
+                for (i = 1; i <= hNumOfDivisions; i++){
+                    var y = screenH - screenH/hNumOfDivisions*i;
+                    paper.path(makeLinePath('h', x0, y)).attr(lineParams);
+                    paper.text(x0 - 15, y, '' + max/hNumOfDivisions*i);
+                    for (j = 1; j <= numOfSubs; j++){
+                        paper.path(makeLinePath('h', x0, y +screenH/hNumOfDivisions/numOfSubs*j)).attr(lineParams);
+                    }
+                }
+            }
+            function verticalDivisions() {
+                var max = maxScaleX || maxScale;
+                for (i = 1; i <= vNumOfDivisions; i++){
+                    var x = x0 + screenW/vNumOfDivisions*i;
+                    paper.path(makeLinePath('v', x, y0)).attr(lineParams);
+                    paper.text(x, y0 + 5, '' + max/vNumOfDivisions*i);
+                    for (j = 1; j <= numOfSubs; j++){
+                        paper.path(makeLinePath('v', x, y0 + screenW/vNumOfDivisions/numOfSubs*j)).attr(lineParams);
+                    }
+                }
+            }
+        }
+
+        //helpers
+        function makeLinePath(direction, xStart, yStart) {
+            var m = {
+                'v': [xStart, 0],
+                'h': [screenW, yStart]
+            };
+            return [
+                "M", xStart, yStart,
+                "L", m[direction][0], m[direction][1]
+            ]
+        }
+
+
+        function drawLabels() {
+            var rootElement = paper.canvas.parentNode,
+                longScaleV = document.createElement('ul'),
+                containerV = document.createDocumentFragment();
+
+            longScaleV.className = 'raphael-vertical-long-scale';
+            rootElement.parentNode.insertBefore(longScaleV, rootElement);
+
+            var numOfVals = values.length,
+                step = (y0 - 2*params.padding)/ numOfVals;
+            for( var i = 0; i < numOfVals; i++ ){
+                var li = document.createElement('li'),
+                    scaleTitle = document.createElement('span'),
+                    scaleValue = document.createElement('span');
+
+                li.style.height = step + 'px';
+                li.style.lineHeight = step + 'px';
+                scaleTitle.className = 'title';
+                scaleValue.className = 'value';
+                scaleTitle.innerHTML = labels[i];
+                scaleValue.innerHTML = values[i];
+                li.appendChild(scaleTitle);
+                li.appendChild(scaleValue);
+                containerV.appendChild(li);
+            }
+
+            longScaleV.appendChild(containerV);
+        }
+
+        return paper;
+    }
+
+    // --- Legend ---
     function createLegend (el, o) {
         var legend = new Legend(el, o);
         legend.createLegend();
